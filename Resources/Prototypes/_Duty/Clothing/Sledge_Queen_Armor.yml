@@ -1,0 +1,20 @@
+- type: entity
+  parent: [ClothingHeadHelmetBase, BaseSecurityContraband]
+  id: ClothingHeadHelmetSQcrown
+  name: Sledge queen`s crown
+  description: Queen`s crown. It`s blocking damage for all head. Don`t ask why.
+  components:
+  - type: Sprite
+    sprite: _Duty/Clothing/SQA/Helmet.rsi
+  - type: Clothing
+    sprite: _Duty/Clothing/SQA/Helmet.rsi
+    modifiers:
+      coefficients:
+        Blunt: 0.60
+        Slash: 0.60
+        Piercing: 0.60
+        Heat: 0.80
+        Radiation: 0.80
+        Caustic: 0.60
+  - type: ExplosionResistance
+    damageCoefficient: 0.3
