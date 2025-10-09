@@ -1,20 +1,14 @@
-# SPDX-FileCopyrightText: 2023 Alex Evgrashin <aevgrashin@yandex.ru>
-# SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 justproggramer <68664576+Klaypexx@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 lzk228 <124214523+lzk228@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Unkn0wn_Gh0st <shadowstalkermll@gmail.com>
-# SPDX-FileCopyrightText: 2024 Whisper <121047731+QuietlyWhisper@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 - type: soundCollection
   id: MaleLaugh
   files:
     - /Audio/Voice/Human/manlaugh1.ogg
     - /Audio/Voice/Human/manlaugh2.ogg
+    - /Audio/_Duty/Emotes/manlaugh1.ogg
+    - /Audio/_Duty/Emotes/manlaugh2.ogg
+    - /Audio/_Duty/Emotes/Mediclaugh.ogg
+    - /Audio/_Duty/Emotes/Sniperlaugh.ogg
+    - /Audio/_Duty/Emotes/Spylaugh.ogg
+    - /Audio/_Duty/Emotes/Engineerlaugh.ogg
 
 - type: soundCollection
   id: FemaleLaugh
@@ -78,6 +72,9 @@
     - /Audio/Voice/Human/cry_male_2.ogg
     - /Audio/Voice/Human/cry_male_3.ogg
     - /Audio/Voice/Human/cry_male_4.ogg
+    - /Audio/_Duty/Emotes/cry_male_1.ogg
+    - /Audio/_Duty/Emotes/cry_male_2.ogg
+    - /Audio/_Duty/Emotes/cry_male_4.ogg
 
 - type: soundCollection
   id: FemaleCry
@@ -94,6 +91,8 @@
     - /Audio/Voice/Human/whistle_2.ogg
     - /Audio/Voice/Human/whistle_3.ogg
     - /Audio/Voice/Human/whistle_4.ogg
+    - /Audio/_Duty/Emotes/svist.ogg
+    - /Audio/_Duty/Emotes/svist-mlrs.ogg
 
 - type: soundCollection
   id: Squishes
