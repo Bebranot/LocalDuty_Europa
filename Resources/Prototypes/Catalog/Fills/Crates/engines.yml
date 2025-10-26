@@ -196,3 +196,14 @@
   - type: StorageFill
     contents:
       - id: TeslaGroundingRodFlatpack
+
+- type: entity
+  id: CrateEngineeringRTG # Europa Plus
+  parent: CrateEngineeringSecure
+  name: RTG crate
+  description: Radioisotope Thermoelectric Generator, best for when batteries just give up.
+  components:
+  - type: StorageFill
+    contents:
+      - id: RTGFlatpack
+      - id: ToyFigurineChiefEngineer

@@ -257,3 +257,17 @@
   materials:
     Steel: 100
     Plastic: 100
+
+- type: latheRecipe
+  id: SprayBottleStypticPowder
+  result: SprayBottleStypticPowderEmpty
+  completetime: 2
+  materials:
+    Plastic: 100
+
+- type: latheRecipe
+  id: SprayBottleSilverSulfadiazine
+  result: SprayBottleSilverSulfadiazineEmpty
+  completetime: 2
+  materials:
+    Plastic: 100

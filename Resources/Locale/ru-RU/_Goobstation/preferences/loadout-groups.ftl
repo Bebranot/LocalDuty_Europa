@@ -10,12 +10,12 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-loadout-group-ntr-head = Голова представителя НаноТрейзен
-loadout-group-ntr-backpack = Рюкзак представителя НаноТрейзен
-loadout-group-ntr-neck = Ожерелье представителя НаноТрейзен
+loadout-group-ntr-head = Голова Центрального Командования
+loadout-group-ntr-backpack = Рюкзак Центрального Командования
+loadout-group-ntr-neck = Ожерелье Центрального Командования
 loadout-group-ntr-jumpsuit = Комбинезон представителя НаноТрейзен
-loadout-group-ntr-belt = Пояс представителя НаноТрейзен
-loadout-group-ntr-shoes = Обувь представителя НаноТрейзен
+loadout-group-ntr-belt = Пояс Центрального Командования
+loadout-group-ntr-shoes = Обувь Центрального Командования
 loadout-group-bso-head = Голова офицера Синего Щита
 loadout-group-bso-backpack = Рюкзак офицера Синего Щита
 loadout-group-bso-jumpsuit = Комбинезон офицера Синего Щита

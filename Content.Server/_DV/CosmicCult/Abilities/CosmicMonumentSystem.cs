@@ -128,8 +128,8 @@ public sealed class CosmicMonumentSystem : EntitySystem
 
         EntityUid? stationGrid = null;
 
-        if (TryComp<StationDataComponent>(station, out var stationData))
-            stationGrid = _station.GetLargestGrid(stationData);
+        if (TryComp<StationDataComponent>(station, out _))
+            stationGrid = _station.GetLargestGrid(station.Value);
 
         if (stationGrid is not null && stationGrid != xform.GridUid)
         {

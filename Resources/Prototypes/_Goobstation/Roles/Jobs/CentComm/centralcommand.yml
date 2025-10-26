@@ -30,6 +30,7 @@
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant ]
+  whitelisted: true # Europa Edit
 
 - type: startingGear
   id: NavyOfficerGear
@@ -70,6 +71,7 @@
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant ]
+  whitelisted: true # Europa Edit
 
 - type: startingGear
   id: NavyCaptainGear
@@ -111,6 +113,7 @@
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant ]
+  whitelisted: true # Europa Edit
 
 - type: startingGear
   id: NavyOfficerUndercoverGear
@@ -153,6 +156,7 @@
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant]
+  whitelisted: true # Europa Edit
 
 - type: startingGear
   id: SpecialOperationsOfficerGear
@@ -195,6 +199,7 @@
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant ]
+  whitelisted: true # Europa Edit
 
 - type: startingGear
   id: DiplomatGear
@@ -216,7 +221,7 @@
   name: job-name-inspector
   description: job-description-inspector
   playTimeTracker: JobInspector
-  setPreference: false
+  # setPreference: false
   startingGear: InspectorGear
   icon: "JobIconNanotrasen"
   supervisors: job-supervisors-commander
@@ -224,6 +229,9 @@
   requirements:
   - !type:AgeRequirement
     requiredAge: 21
+  - !type:DepartmentTimeRequirement
+    department: Command
+    time: 180000 #50 hrs
   accessGroups:
   - AllAccess
   access:
@@ -233,6 +241,9 @@
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant ]
+  whitelisted: true # Europa Edit
+  weight: 35
+  alwaysUseSpawner: true
 
 - type: startingGear
   id: InspectorGear

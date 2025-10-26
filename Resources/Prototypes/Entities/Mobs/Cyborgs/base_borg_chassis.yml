@@ -347,6 +347,7 @@
       Unsexed: UnisexSilicon
     wilhelmProbability: 0
   - type: DamagedSiliconAccent
+    enableChargeCorruption: false
   - type: UnblockableSpeech
   - type: FootstepModifier
     footstepSoundCollection:
@@ -430,6 +431,7 @@
     - CanPilot
     - Unimplantable
     - SiliconMob
+    - IPCDrinkBlacklist # Goobstation - Energycrit: Don't let self antagging IPCs steal power from borgs.
     - SiliconEmotes
   - type: Emoting
   - type: GuideHelp
@@ -668,6 +670,7 @@
       Unsexed: UnisexSiliconXenoborg
     screamAction: null
   - type: DamagedSiliconAccent
+    enableChargeCorruption: false
   - type: UnblockableSpeech
   - type: FootstepModifier
     footstepSoundCollection:

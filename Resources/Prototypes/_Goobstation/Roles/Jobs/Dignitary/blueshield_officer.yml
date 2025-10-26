@@ -77,6 +77,7 @@
   - !type:AddObjectiveSpecial
     objectives:
     - BlueshieldRandomCommandAliveObjective
+  whitelisted: true # Europa Edit
 
 - type: startingGear
   id: BlueshieldOfficerGear

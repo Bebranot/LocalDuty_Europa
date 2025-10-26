@@ -60,6 +60,7 @@
     - BaseStationGateway
     - BaseStationShuttles
     - BaseStationCentcomm
+    - BaseStationTransitHub # Skibidi
     - BaseStationEvacuation
     - BaseStationAlertLevels
     - BaseStationMagnet
@@ -70,6 +71,7 @@
     - BaseStationNanotrasen
     - BaseStationMail # Nyano component, required for station mail to function
     - BaseStationWizardTarget # Goobstation
+    - BaseStationBlockSelling # Skibidi
   categories: [ HideSpawnMenu ]
   components:
     - type: Transform
@@ -80,6 +82,9 @@
     - BaseStation
     - BaseStationAlertLevels
     - BaseStationNanotrasen
+    - BaseStationRecords
+    - BaseStationJobsSpawning
+    - BaseStationBlockSelling # Skibidi
   categories: [ HideSpawnMenu ]
   components:
     - type: Transform
@@ -94,3 +99,24 @@
   categories: [ HideSpawnMenu ]
   components:
     - type: Transform
+
+- type: entity
+  id: BaseStationTransitHub
+  abstract: true
+  components:
+  - type: StationTransitHub
+    map: /Maps/transit_hub.yml
+    biomes:
+    - Grasslands
+    - Snow
+
+- type: entity
+  id: BaseStationCentcomm
+  abstract: true
+  components:
+  - type: StationCentcomm
+    station: CentComm
+    shuttleWhitelist:
+      components:
+      - CentCommShuttle
+      - ErtShuttle

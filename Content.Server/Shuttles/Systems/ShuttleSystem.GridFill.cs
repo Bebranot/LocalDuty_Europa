@@ -160,10 +160,10 @@ public sealed partial class ShuttleSystem
         if (!_cfg.GetCVar(CCVars.GridFill))
             return;
 
-        if (!TryComp(uid, out StationDataComponent? dataComp))
+        if (!TryComp(uid, out StationDataComponent? _))
             return;
 
-        var targetGrid = _station.GetLargestGrid(dataComp);
+        var targetGrid = _station.GetLargestGrid(uid);
 
         if (targetGrid == null)
             return;
@@ -263,12 +263,12 @@ public sealed partial class ShuttleSystem
         if (!_cfg.GetCVar(CCVars.GridFill))
             return;
 
-        if (!TryComp<StationDataComponent>(uid, out var data))
+        if (!TryComp<StationDataComponent>(uid, out _))
         {
             return;
         }
 
-        var targetGrid = _station.GetLargestGrid(data);
+        var targetGrid = _station.GetLargestGrid(uid);
 
         if (targetGrid == null)
             return;

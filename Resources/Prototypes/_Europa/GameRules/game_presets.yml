@@ -1,0 +1,136 @@
+- type: gamePreset
+  id: SecretNukeops #For Admin Use: Runs Extended but shows "Secret" in lobby.
+  alias:
+  - secops
+  - secretops
+  - secretnukies
+  - nukopssecret
+  - nukiessecret
+  name: secret-title
+  showInVote: false #Admin Use
+  description: secret-description
+  rules:
+  - Nukeops
+  - DummyNonAntag
+  - BasicStationEventScheduler
+  - MeteorSwarmScheduler
+  - SpaceTrafficControlEventScheduler
+  - BasicRoundstartVariation
+  - LavalandStormScheduler # Lavaland Change
+
+- type: gamePreset
+  id: SecretRevolution #For Admin Use: Runs Extended but shows "Secret" in lobby.
+  alias:
+  - secrev
+  - secrevs
+  - secretrevs
+  - secretrevolutionaries
+  - secretrevolution
+  - secretrev
+  - revsec
+  - revssec
+  - revsecret
+  - revssecret
+  name: secret-title
+  showInVote: false #Admin Use
+  description: secret-description
+  rules:
+  - DummyNonAntag
+  - Revolutionary
+  - BasicStationEventScheduler
+  - MeteorSwarmScheduler
+  - SpaceTrafficControlEventScheduler
+  - BasicRoundstartVariation
+  - LavalandStormScheduler # Lavaland Change
+
+- type: gamePreset
+  id: SecretZombie #For Admin Use: Runs Extended but shows "Secret" in lobby.
+  alias:
+  - seczombie
+  - seczombies
+  - secretzombie
+  - sceretzombies
+  - zombiesecret
+  - zombiessecret
+  - zombiesec
+  - zombiessec
+  name: secret-title
+  showInVote: false #Admin Use
+  description: secret-description
+  rules:
+  - DummyNonAntag
+  - Zombie
+  - BasicStationEventScheduler
+  - MeteorSwarmScheduler
+  - SpaceTrafficControlEventScheduler
+  - BasicRoundstartVariation
+  - LavalandStormScheduler # Lavaland Change
+
+- type: gamePreset
+  id: SecretWizard #For Admin Use: Runs Extended but shows "Secret" in lobby.
+  alias:
+  - secwiz
+  - secwizard
+  - secretwiz
+  - sceretwizard
+  - wizsecret
+  - wizardsecret
+  - wizsec
+  - wizardsec
+  name: secret-title
+  showInVote: false #Admin Use
+  description: secret-description
+  rules:
+  - Wizard
+  - DummyNonAntag
+  - SleepersOnWizardDeath
+  - BasicStationEventScheduler
+  - SpaceTrafficControlEventScheduler
+  - BasicRoundstartVariation
+  - LavalandStormScheduler # Lavaland Change
+
+- type: gamePreset
+  id: SecretShadowling #For Admin Use: Runs Extended but shows "Secret" in lobby.
+  alias:
+  - secsling
+  - secshadowling
+  - secretsling
+  - secretshadowling
+  - slingsec
+  - slingsecret
+  - shadowlingsec
+  - shadowlingsecret
+  name: secret-title
+  showInVote: false #Admin Use
+  description: secret-description
+  rules:
+  - DummyNonAntag
+  - Shadowling
+  - BasicStationEventScheduler
+  - MeteorSwarmScheduler
+  - SpaceTrafficControlEventScheduler
+  - BasicRoundstartVariation
+  - LavalandStormScheduler # Lavaland Change
+
+- type: gamePreset
+  id: SecretChangeling #For Admin Use: Runs Extended but shows "Secret" in lobby.
+  alias:
+  - secling
+  - secchangeling
+  - secretling
+  - secretchangeling
+  - lingsec
+  - lingsecret
+  - changelingsec
+  - changelingsecret
+  name: secret-title
+  showInVote: false #Admin Use
+  description: secret-description
+  rules:
+  - DummyNonAntag
+  - Changeling
+  - BasicStationEventScheduler
+  - MeteorSwarmScheduler
+  - SpaceTrafficControlEventScheduler
+  - BasicRoundstartVariation
+  - LavalandStormScheduler # Lavaland Change

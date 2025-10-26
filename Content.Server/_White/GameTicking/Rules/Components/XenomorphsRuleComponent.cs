@@ -5,8 +5,6 @@ namespace Content.Server._White.GameTicking.Rules.Components;
 [RegisterComponent]
 public sealed partial class XenomorphsRuleComponent : Component
 {
-    [ViewVariables]
-    public List<EntityUid> Xenomorphs = new ();
 
     #region Check
 

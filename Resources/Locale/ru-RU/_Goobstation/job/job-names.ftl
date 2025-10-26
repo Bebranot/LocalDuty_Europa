@@ -16,17 +16,17 @@ job-name-exec = служебный доступ
 
 # Navy Stuff
 
-job-name-navyofficer = офицер ЦК
-job-name-navy-officer-undercover = офицер под прикрытием
-job-name-navycaptain = капитан ВКФ
+job-name-navyofficer = офицер флота Центрального Командования
+job-name-navy-officer-undercover = офицер флота под прикрытием
+job-name-navycaptain = капитан флота Центрального Командования
 job-name-diplomat = дипломат НаноТрейзен
-job-name-inspector = инспектор ЦК
-job-name-nct = наставник ЦК
+job-name-inspector = инспектор Центрального Командования
+job-name-nct = инструктор Центрального Командования
 job-name-special-operations-officer = офицер спецопераций
 
 # Syndicate
 
-job-name-highcommander = Офицер Синдиката
+job-name-highcommander = офицер Синдиката
 
 # Half Life
 
@@ -43,13 +43,13 @@ job-name-mercenarycaptain = капитан Наёмников
 
 JobBlueshieldOfficer = офицер Синего Щита
 JobNanotrasenRepresentative = представитель НаноТрейзен
-JobNanotrasenCareerTrainer = наставник ЦК
+JobNanotrasenCareerTrainer = инструктор Центрального Командования
 JobHecuOperative = агент ХЕКУ
-JobNavyOfficer = офицер ЦК
-JobNavyOfficerUndercover = офицер под прикрытием
-JobNavyCaptain = капитан ВКФ
+JobNavyOfficer = офицер флота Центрального Командования
+JobNavyOfficerUndercover = офицер флота под прикрытием
+JobNavyCaptain = капитан флота Центрального Командования
 JobDiplomat = дипломат НаноТрейзен
 JobGovernmentMan = Джи-Мэн
 JobConquest = конквест
-JobInspector = инспектор ЦК
+JobInspector = инспектор Центрального Командования
 JobMercenaryCaptain = капитан Наёмников

@@ -257,6 +257,9 @@ namespace Content.Shared.Roles
         /// </summary>
         [DataField]
         public int Goobcoins { get; private set; } = 1;
+
+        [DataField("alwaysUseSpawner")]
+        public bool AlwaysUseSpawner { get; }
     }
 
     /// <summary>

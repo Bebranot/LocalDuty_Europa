@@ -89,7 +89,8 @@ using System.Numerics;
 using Content.Server.Administration.Managers;
 using Content.Server.Administration.Systems;
 using Content.Server.GameTicking.Events;
-using Content.Server.Ghost;
+using Content.Server.Players.PlayTimeTracking;
+using Content.Server.Shuttles.Systems;
 using Content.Server.Spawners.Components;
 using Content.Server.Speech.Components;
 using Content.Server.Station.Components;
@@ -121,6 +122,8 @@ namespace Content.Server.GameTicking
         [Dependency] private readonly IAdminManager _adminManager = default!;
         [Dependency] private readonly SharedJobSystem _jobs = default!;
         [Dependency] private readonly AdminSystem _admin = default!;
+        [Dependency] private readonly ArrivalsSystem _arrivals = default!;
+        [Dependency] private readonly PlayTimeTrackingManager _playTimeTracking = default!;
 
         public static readonly EntProtoId ObserverPrototypeName = "MobObserver";
         public static readonly EntProtoId AdminObserverPrototypeName = "AdminObserver";
@@ -373,8 +376,25 @@ namespace Content.Server.GameTicking
 
             _playTimeTrackings.PlayerRolesChanged(player);
 
-            var mobMaybe = _stationSpawning.SpawnPlayerCharacterOnStation(station, jobId, character);
-            DebugTools.AssertNotNull(mobMaybe);
+            var overall = _playTimeTracking.GetOverallPlaytime(player);
+
+            EntityUid? mobMaybe = null;
+            var spawnPointType = SpawnPointType.Unset;
+            if (jobPrototype.AlwaysUseSpawner)
+            {
+                lateJoin = false;
+                spawnPointType = SpawnPointType.Job;
+            }
+            else
+            {
+                if (_cfg.GetCVar(CCVars.ArrivalsRoundStartSpawn) && overall > TimeSpan.FromHours(_cfg.GetCVar(CCVars.ArrivalsMinHours)) || RunLevel == GameRunLevel.InRound)
+                {
+                    mobMaybe = _arrivals.SpawnPlayersOnArrivals(station, jobPrototype, character);
+                }
+            }
+
+            if (mobMaybe == null)
+                mobMaybe = _stationSpawning.SpawnPlayerCharacterOnStation(station, jobPrototype, character, spawnPointType: spawnPointType);
             var mob = mobMaybe!.Value;
 
             _mind.TransferTo(newMind, mob);

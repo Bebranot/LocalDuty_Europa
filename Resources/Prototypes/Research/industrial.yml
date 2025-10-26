@@ -191,6 +191,7 @@
   tier: 1
   cost: 7500
   recipeUnlocks:
+  - WallmountGeneratorElectronics # Europa Plus
   - PortableGeneratorPacmanMachineCircuitboard
   - PortableGeneratorSuperPacmanMachineCircuitboard
   - PortableGeneratorJrPacmanMachineCircuitboard

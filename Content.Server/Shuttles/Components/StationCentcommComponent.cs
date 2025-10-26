@@ -6,6 +6,10 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Server.Maps;
+using Content.Shared.Whitelist;
+using Robust.Shared.Map;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Robust.Shared.Utility;
 
 namespace Content.Server.Shuttles.Components;
@@ -16,21 +20,14 @@ namespace Content.Server.Shuttles.Components;
 [RegisterComponent]
 public sealed partial class StationCentcommComponent : Component
 {
-    /// <summary>
-    /// Crude shuttle offset spawning.
-    /// </summary>
-    [DataField]
-    public float ShuttleIndex;
+    [DataField(customTypeSerializer:typeof(PrototypeIdSerializer<GameMapPrototype>), required: true)]
+    public string Station = default!;
 
     [DataField]
-    public ResPath Map = new("/Maps/centcomm.yml");
-
-    /// <summary>
-    /// Centcomm entity that was loaded.
-    /// </summary>
-    [DataField]
-    public EntityUid? Entity;
+    public EntityWhitelist? ShuttleWhitelist;
 
     [DataField]
-    public EntityUid? MapEntity;
+    public EntityUid Entity = EntityUid.Invalid;
+
+    public MapId MapId = MapId.Nullspace;
 }

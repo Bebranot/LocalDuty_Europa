@@ -41,6 +41,25 @@
       - Wall
 
 - type: clause
+  id: goldenblood
+  clauseWeight: -80
+  addedComponents:
+  - type: SolutionRegeneration
+    solution: chemicals
+    duration: 10
+    generated:
+      reagents:
+      - ReagentId: Ichor
+        Quantity: 5
+
+- type: clause
+  id: gluttony
+  clauseWeight: -10
+  removedComponents:
+  - type: Hunger
+  - type: Thirst
+
+- type: clause
   id: fearoffire
   clauseWeight: -20
   damageModifierSet: HellSpawn
@@ -54,6 +73,21 @@
   - ClothingShoesRealJordansAutographed
 
 - type: clause
+  id: 1984
+  clauseWeight: -20
+  spawnedItems:
+  - ClothingNeck1984medal
+
+- type: clause
+  id: seedsofhell
+  clauseWeight: -15
+  spawnedItems:
+  - PyrottonSeeds
+  - BloodTomatoSeeds
+  - KillerTomatoSeeds
+  - DeathNettleSeeds
+
+- type: clause
   id: fearofdeath
   clauseWeight: -25
   addedComponents:
@@ -64,10 +98,59 @@
       201: Dead
 
 - type: clause
+  id: truthmindshield
+  clauseWeight: -45
+  addedComponents:
+  - type: FakeMindShield
+    isEnabled: true
+
+- type: clause
+  id: fearofsecurity
+  clauseWeight: -25
+  implants:
+  - FreedomImplant
+
+- type: clause
+  id: gravity
+  clauseWeight: 20
+  addedComponents:
+  - type: GravityWell
+    maxRange: 2.5
+    minRange: 0.5
+    baseRadialAcceleration: 5
+    baseTangentialAcceleration: 5
+
+- type: clause
   id: fearoflight
-  clauseWeight: -15
+  clauseWeight: -25
   addedComponents:
   - type: FlashImmunity
+  - type: EyeProtection
+
+- type: clause
+  id: variegation
+  clauseWeight: 15
+  addedComponents:
+  - type: NoirOverlay
+
+- type: clause
+  id: punk
+  clauseWeight: 10
+  addedComponents:
+  - type: UltraVision
+
+- type: clause
+  id: gamma
+  clauseWeight: 10
+  addedComponents:
+  - type: DogVision
+
+- type: clause
+  id: insight
+  clauseWeight: -35
+  addedComponents:
+  - type: NightVision
+  - type: ThermalVision
 
 - type: clause
   id: fearofelectricity
@@ -76,11 +159,17 @@
   - type: Insulated
 
 - type: clause
-  id: gluttony
-  clauseWeight: -10
-  removedComponents:
-  - type: Hunger
-  - type: Thirst
+  id: fearoflevitation
+  clauseWeight: -30
+  addedComponents:
+  - type: CanMoveInAir
+  - type: MovementIgnoreGravity
+
+- type: clause
+  id: fly
+  clauseWeight: -20
+  addedComponents:
+  - type: Flight
 
 - type: clause
   id: fearofdrowning
@@ -105,12 +194,6 @@
   clauseWeight: -10
   addedComponents:
   - type: SpecialLowTempImmunity
-
-- type: clause
-  id: greed
-  clauseWeight: -10
-  spawnedItems:
-  - SpaceCash30000
 
 - type: clause
   id: pain
@@ -140,6 +223,16 @@
   polymorph: MobFrogPolymorph
 
 - type: clause
+  id: evilbones
+  clauseWeight: 30
+  polymorph: MobSkeletonPolymorph
+
+- type: clause
+  id: hell
+  clauseWeight: -300
+  polymorph: MobHellPolymorph
+
+- type: clause
   id: strength
   clauseWeight: 30
   damageModifierSet: DevilDealNegative
@@ -151,10 +244,55 @@
   - type: Pacified
 
 - type: clause
+  id: willtopeace
+  clauseWeight: -60
+  removedComponents:
+  - type: Pacified
+
+- type: clause
+  id: dumb
+  clauseWeight: -25
+  implants:
+  - SpaceItalianTranslatorImplant
+  - TauCetiBasicTranslatorImplant
+  - SolCommonTranslatorImplant
+
+- type: clause
+  id: disintegration
+  clauseWeight: 50
+  addedComponents:
+  - type: RadiationSource
+    intensity: 0.15
+    slope: 0.1
+
+- type: clause
   id: sight
   clauseWeight: 60
   addedComponents:
   - type: PermanentBlindness
+
+- type: clause
+  id: voicesofhell
+  clauseWeight: 5
+  addedComponents:
+  - type: Paracusia
+    minTimeBetweenIncidents: 30
+    maxTimeBetweenIncidents: 60
+    maxSoundDistance: 5
+    sounds:
+      collection: Paracusia
+
+- type: clause
+  id: volumewhisper1.ogg
+  clauseWeight: 20
+  addedComponents:
+  - type: Deaf
+
+- type: clause
+  id: lastchance
+  clauseWeight: 50
+  addedComponents:
+  - type: Unrevivable
 
 - type: clause
   id: coherence
@@ -167,6 +305,12 @@
   id: voice
   clauseWeight: 20
   addedComponents:
+  - type: Muted
+
+- type: clause
+  id: hush
+  clauseWeight: -30
+  removedComponents:
   - type: Muted
 
 - type: clause
@@ -219,6 +363,33 @@
     infiniteRevives: true
 
 - type: clause
+  id: mirror
+  clauseWeight: -50
+  spawnedItems:
+  - MirrorShield
+
+- type: clause
+  id: magic
+  clauseWeight: -100
+  spawnedItems:
+  - ClothingOuterWizardBlackReal
+  - ClothingHeadHatBlackwizardReal
+
+- type: clause
+  id: mimecurse
+  clauseWeight: -15
+  spawnedItems:
+  - DrinkBottleOfNothingFull
+  - FoodBurgerMime
+
+- type: clause
+  id: clowncurse
+  clauseWeight: -15
+  spawnedItems:
+  - FoodSoupClown
+  - FoodBurgerClown
+
+- type: clause
   id: time
   clauseWeight: 150
   addedComponents:
@@ -226,3 +397,36 @@
     preventAllRevives: true # :trol:
     deathTime: 300
     deathMessageId: devil-deal-time-ran-out
+
+# TRADING
+
+- type: clause
+  id: greed
+  clauseWeight: -10
+  spawnedItems:
+  - SpaceCash30000
+
+- type: clause
+  id: сorpseeater
+  clauseWeight: -10
+  spawnedItems:
+  - MaterialGoliathHide1
+  - MaterialToothSpaceCarp1
+
+- type: clause
+  id: degradation
+  clauseWeight: -10
+  spawnedItems:
+  - ResearchDisk10000
+
+- type: clause
+  id: particlesgreed
+  clauseWeight: -10
+  spawnedItems:
+  - Telecrystal1
+
+- type: clause
+  id: holygreed
+  clauseWeight: -10
+  spawnedItems:
+  - MaterialCosmicCultEntropy1

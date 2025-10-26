@@ -134,6 +134,7 @@
 # SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
 # SPDX-FileCopyrightText: 2025 username <113782077+whateverusername0@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 whateverusername0 <whateveremail>
+# SPDX-FileCopyrightText: 2025 korczoczek <danielkorczok+git@gmail.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 # This is a basic dictionary that maps old entity prototype ids to new ids. This only works for entity prototypes, and
@@ -245,9 +246,6 @@ BenchSofaCorpMiddle: null
 BenchSofaCorpRight: null
 BenchSofaLeft: null
 BenchSofaRight: null
-BenchSteelLeft: null
-BenchSteelMiddle: null
-BenchSteelRight: null
 BenchSteelWhiteLeft: null
 BenchSteelWhiteMiddle: null
 BenchSteelWhiteRight: null
@@ -1118,3 +1116,37 @@ BarSignWhiskeyEchoesAlignTile: BarSignWhiskeyEchoes
 
 # 2025-06-21
 ClothingNeckHeadphones: ClothingMultipleHeadphones
+
+# 2025-10-09
+FoodDonutJellySlugcat: FoodDonutJellyScurret
+
+# 2025-10-13 skibidi
+AirlockExternalGlassShuttleArrivalsLockedCentComm: AirlockExternalGlassShuttleArrivals
+AirlockExternalGlassShuttleEmergencyLockedCentComm: AirlockExternalGlassShuttleEmergencyLocked
+ChairOfficeGrey: ChairOfficeDark
+ComfyBrownChair: ComfyChair
+CopyMachineFilled: FaxMachineCentcom
+CorpSofaCorner: BenchSofaCorner
+CorpSofaLeft: BenchSofaLeft
+CorpSofaMiddle: BenchSofaMiddle
+CorpSofaRight: BenchSofaRight
+DoubleBed: Bed
+DoubleBedsheetBrown: Bed
+DoubleBedsheetCosmos: Bed
+DoubleGlassAirlock: null
+Pacificator: null
+PlushieKalium: null
+PottedPlantAlt0: PottedPlant0
+PottedPlantAlt1: PottedPlant1
+PottedPlantAlt2: PottedPlant2
+PottedPlantAlt3: PottedPlant3
+PottedPlantAlt4: PottedPlant4
+PottedPlantAlt5: PottedPlant5
+PottedPlantAlt6: PottedPlant6
+RailingCornerWood: null
+RailingWood: null
+SofaCorner: BenchSofaCorner
+SofaLeft: BenchSofaLeft
+SofaMiddle: BenchSofaMiddle
+SofaRight: BenchSofaRight
+TripleGlassAirlock: null

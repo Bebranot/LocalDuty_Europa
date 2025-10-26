@@ -68,6 +68,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Content.Goobstation.Common.Construction; // Goobstation
 using Content.Server.Construction.Components;
+using Content.Shared._Europa.BlockBuild;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Construction;
 using Content.Shared.Construction.Prototypes;
@@ -561,6 +562,12 @@ namespace Content.Server.Construction
             HandsComponent? hands = null;
             if (senderSession != null && !TryComp(user, out hands))
                 return false;
+
+            if (HasComp<BlockBuildGridComponent>(location.EntityId))
+            {
+                Cleanup();
+                return false;
+            }
 
             foreach (var condition in constructionPrototype.Conditions)
             {

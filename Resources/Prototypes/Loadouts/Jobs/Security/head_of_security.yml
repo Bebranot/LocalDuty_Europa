@@ -164,6 +164,13 @@
   equipment:
     neck: ClothingNeckMantleHOS
 
+      # Europe edited start
+- type: loadout
+  id: HeadofSecurityClothingNeck1984medal
+  equipment:
+    neck: ClothingNeck1984medal
+      # Europe edited end
+
 # OuterClothing
 - type: loadout
   id: HeadofSecurityCoat

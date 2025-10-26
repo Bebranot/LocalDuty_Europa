@@ -21,8 +21,7 @@
 - type: xenomorphCaste
   id: Praetorian
   name: xenomorph-caste-praetorian
-  needCasteDeath: Queen
-  maxCount: 1
+  maxCount: 3
 
 - type: xenomorphCaste
   id: Queen

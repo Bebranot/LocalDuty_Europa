@@ -1,0 +1,23 @@
+- type: entity
+  id: SpawnPointNanotrasenCentcommOfficial
+  parent: SpawnPointJobBase
+  name: nanotrasencentcommofficial
+  components:
+  - type: SpawnPoint
+    job_id: CentralCommandOfficial
+  - type: Sprite
+    layers:
+    - state: green
+    - state: centcom
+
+- type: entity
+  id: SpawnPointNanotrasenCentcommInspector
+  parent: SpawnPointJobBase
+  name: nanotrasencentcomminspector
+  components:
+  - type: SpawnPoint
+    job_id: Inspector
+  - type: Sprite
+    layers:
+    - state: green
+    - state: centcom

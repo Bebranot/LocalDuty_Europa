@@ -61,6 +61,12 @@
   icon: { sprite:  Structures/Power/substation.rsi, state: substation } # Goobstation
   result: WallmountSubstationElectronics
 
+- type: latheRecipe
+  parent: [ BaseCircuitboardRecipe, BaseCircuitryRecipeCategory ]
+  id: WallmountGeneratorElectronics
+  icon: { sprite:  Structures/Power/Generation/wallmount_generator.rsi, state: static } # Europa Plus
+  result: WallmountGeneratorElectronics
+
 # Wallmount
 - type: latheRecipe
   parent: [ BaseCheapElectronicsRecipe, BaseCircuitryRecipeCategory ]

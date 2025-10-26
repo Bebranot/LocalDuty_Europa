@@ -1,2 +1,2 @@
-ent-CentralCommandBusinessCard = визитка ЦентКома
+ent-CentralCommandBusinessCard = визитка ЦК
     .desc = Зелёная карточка с логотипом НаноТрейзен. На обратной стороне что-то написано.

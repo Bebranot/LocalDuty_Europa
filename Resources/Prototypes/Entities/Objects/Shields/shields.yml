@@ -472,21 +472,24 @@
           Slash: 1.2
           Piercing: 1.2
           Heat: .7
+          Holy: .7
       activeBlockModifier:
         coefficients:
           Blunt: 1.2
           Slash: 1.2
           Piercing: 1.2
           Heat: .6
+          Holy: 1.2
         flatReductions:
           Heat: 1
+          Holy: 2
       blockSound: !type:SoundPathSpecifier
         path: /Audio/Effects/glass_step.ogg
     - type: Destructible
       thresholds:
         - trigger:
             !type:DamageTrigger
-            damage: 40
+            damage: 80
           behaviors:
             - !type:DoActsBehavior
               acts: [ "Destruction" ]

@@ -1216,23 +1216,106 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.HasIndex("DiscordRole")
                         .IsUnique();
 
+                    b.HasIndex("LobbyMessage")
+                        .HasDatabaseName("IX_rmc_patron_tiers_lobby_message");
+
+                    b.HasIndex("RoundEndShoutout")
+                        .HasDatabaseName("IX_rmc_patron_tiers_round_end_shoutout");
+
                     b.ToTable("rmc_patron_tiers", (string)null);
                 });
 
             modelBuilder.Entity("Content.Server.Database.RoleWhitelist", b =>
                 {
-                    b.Property<Guid>("PlayerUserId")
+                    b.Property<int>("RoleWhitelistId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("role_whitelist_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("RoleWhitelistId"));
+
+                    b.Property<DateTime>("FirstTimeAdded")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("first_time_added");
+
+                    b.Property<Guid>("FirstTimeAddedBy")
                         .HasColumnType("uuid")
-                        .HasColumnName("player_user_id");
+                        .HasColumnName("first_time_added_by");
 
-                    b.Property<string>("RoleId")
+                    b.Property<int>("HowManyTimesAdded")
+                        .HasColumnType("integer")
+                        .HasColumnName("how_many_times_added");
+
+                    b.Property<bool>("InWhitelist")
+                        .HasColumnType("boolean")
+                        .HasColumnName("in_whitelist");
+
+                    b.Property<DateTime>("LastTimeAdded")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("last_time_added");
+
+                    b.Property<Guid>("LastTimeAddedBy")
+                        .HasColumnType("uuid")
+                        .HasColumnName("last_time_added_by");
+
+                    b.Property<DateTime?>("LastTimeRemoved")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("last_time_removed");
+
+                    b.Property<Guid?>("LastTimeRemovedBy")
+                        .HasColumnType("uuid")
+                        .HasColumnName("last_time_removed_by");
+
+                    b.Property<Guid>("PlayerId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("player_id");
+
+                    b.HasKey("RoleWhitelistId")
+                        .HasName("PK_role_whitelist");
+
+                    b.HasIndex("PlayerId")
+                        .IsUnique()
+                        .HasDatabaseName("IX_role_whitelist_player_id");
+
+                    b.ToTable("role_whitelist", (string)null);
+                });
+
+            modelBuilder.Entity("Content.Server.Database.RoleWhitelistLog", b =>
+                {
+                    b.Property<int>("RoleWhitelistLogId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("role_whitelist_log_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("RoleWhitelistLogId"));
+
+                    b.Property<Guid>("AdminId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("admin_id");
+
+                    b.Property<Guid>("PlayerId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("player_id");
+
+                    b.Property<string>("RoleWhitelistAction")
+                        .IsRequired()
                         .HasColumnType("text")
-                        .HasColumnName("role_id");
+                        .HasColumnName("role_whitelist_action");
 
-                    b.HasKey("PlayerUserId", "RoleId")
-                        .HasName("PK_role_whitelists");
+                    b.Property<DateTime>("Time")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("time");
 
-                    b.ToTable("role_whitelists", (string)null);
+                    b.HasKey("RoleWhitelistLogId")
+                        .HasName("PK_role_whitelist_log");
+
+                    b.HasIndex("AdminId")
+                        .HasDatabaseName("IX_role_whitelist_log_admin_id");
+
+                    b.HasIndex("PlayerId")
+                        .HasDatabaseName("IX_role_whitelist_log_player_id");
+
+                    b.ToTable("role_whitelist_log", (string)null);
                 });
 
             modelBuilder.Entity("Content.Server.Database.Round", b =>
@@ -2112,19 +2195,6 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Navigation("Patron");
                 });
 
-            modelBuilder.Entity("Content.Server.Database.RoleWhitelist", b =>
-                {
-                    b.HasOne("Content.Server.Database.Player", "Player")
-                        .WithMany("JobWhitelists")
-                        .HasForeignKey("PlayerUserId")
-                        .HasPrincipalKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_role_whitelists_player_player_user_id");
-
-                    b.Navigation("Player");
-                });
-
             modelBuilder.Entity("Content.Server.Database.Round", b =>
                 {
                     b.HasOne("Content.Server.Database.Server", "Server")
@@ -2380,8 +2450,6 @@ namespace Content.Server.Database.Migrations.Postgres
                     b.Navigation("AdminWatchlistsLastEdited");
 
                     b.Navigation("AdminWatchlistsReceived");
-
-                    b.Navigation("JobWhitelists");
 
                     b.Navigation("LinkedAccount");
 

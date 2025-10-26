@@ -236,23 +236,23 @@ public sealed partial class EmergencyShuttleSystem
             while (dataQuery.MoveNext(out var stationUid, out var comp))
             {
                 if (!TryComp<ShuttleComponent>(comp.EmergencyShuttle, out var shuttle) ||
-                    !TryComp<StationCentcommComponent>(stationUid, out var centcomm))
+                    !TryComp<StationTransitHubComponent>(stationUid, out var transitHub))
                 {
                     continue;
                 }
 
-                if (!Deleted(centcomm.Entity))
+                if (!Deleted(transitHub.Entity))
                 {
                     _shuttle.FTLToDock(comp.EmergencyShuttle.Value, shuttle,
-                        centcomm.Entity.Value, ConsoleAccumulator, TransitTime);
+                        transitHub.Entity.Value, ConsoleAccumulator, TransitTime);
                     continue;
                 }
 
-                if (!Deleted(centcomm.MapEntity))
+                if (!Deleted(transitHub.MapEntity))
                 {
                     // TODO: Need to get non-overlapping positions.
                     _shuttle.FTLToCoordinates(comp.EmergencyShuttle.Value, shuttle,
-                        new EntityCoordinates(centcomm.MapEntity.Value,
+                        new EntityCoordinates(transitHub.MapEntity.Value,
                             _random.NextVector2(1000f)), ConsoleAccumulator, TransitTime);
                 }
             }
@@ -272,7 +272,7 @@ public sealed partial class EmergencyShuttleSystem
         {
             var stationUid = _station.GetOwningStation(uid);
 
-            if (!TryComp<StationCentcommComponent>(stationUid, out var centcomm) ||
+            if (!TryComp<StationTransitHubComponent>(stationUid, out var centcomm) ||
                 Deleted(centcomm.Entity) ||
                 pod.LaunchTime == null ||
                 pod.LaunchTime > _timing.CurTime)
@@ -297,7 +297,7 @@ public sealed partial class EmergencyShuttleSystem
         // All the others.
         if (ConsoleAccumulator < minTime)
         {
-            var query = AllEntityQuery<StationCentcommComponent, TransformComponent>();
+            var query = AllEntityQuery<StationTransitHubComponent, TransformComponent>();
 
             // Guarantees that emergency shuttle arrives first before anyone else can FTL.
             while (query.MoveNext(out var comp, out var centcommXform))
@@ -483,7 +483,7 @@ public sealed partial class EmergencyShuttleSystem
             {
                 [ShuttleTimerMasks.ShuttleMap] = shuttle,
                 [ShuttleTimerMasks.SourceMap] = _roundEnd.GetStation(),
-                [ShuttleTimerMasks.DestMap] = _roundEnd.GetCentcomm(),
+                [ShuttleTimerMasks.DestMap] = _roundEnd.GetTransitHub(),
                 [ShuttleTimerMasks.ShuttleTime] = time,
                 [ShuttleTimerMasks.SourceTime] = time,
                 [ShuttleTimerMasks.DestTime] = time + TimeSpan.FromSeconds(TransitTime),

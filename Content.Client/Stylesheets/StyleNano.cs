@@ -324,6 +324,7 @@ namespace Content.Client.Stylesheets
 
         // Europa-Start
         public static readonly Color ButtonColorCentralCommand = Color.FromHex("#0c344d");
+        public static readonly Color ButtonColorCentralCommandGreen = Color.FromHex("#3eb031");
         public static readonly Color ButtonColorCommand = Color.FromHex("#334E6D");
         public static readonly Color ButtonColorSecurity = Color.FromHex("#DE3A3A");
         public static readonly Color ButtonColorMedical = Color.FromHex("#52B4E9");
@@ -1986,6 +1987,11 @@ namespace Content.Client.Stylesheets
                     .Prop(Control.StylePropertyModulateSelf, ButtonColorCentralCommand),
                 Element<Button>().Class("ButtonColorCentralCommandDepartment").Pseudo(ContainerButton.StylePseudoClassNormal)
                     .Prop(Control.StylePropertyModulateSelf, ButtonColorCentralCommand),
+
+                Element<Button>().Class("ButtonColorCentralCommandDepartmentGreen")
+                    .Prop(Control.StylePropertyModulateSelf, ButtonColorCentralCommandGreen),
+                Element<Button>().Class("ButtonColorCentralCommandDepartmentGreen").Pseudo(ContainerButton.StylePseudoClassNormal)
+                    .Prop(Control.StylePropertyModulateSelf, ButtonColorCentralCommandGreen),
 
                 Element<Button>().Class("ButtonColorCommandDepartment")
                     .Prop(Control.StylePropertyModulateSelf, ButtonColorCommand),

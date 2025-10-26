@@ -74,10 +74,7 @@ public sealed class SharedTailLashSystem : EntitySystem
 
         bool Ignored(EntityUid predicate)
         {
-            if (predicate == uid || !HasComp<MobStateComponent>(predicate))
-                return true;
-
-            return HasComp<XenomorphComponent>(predicate);
+            return predicate == uid || HasComp<XenomorphComponent>(predicate);
         }
 
         var intersect = _physics.IntersectRayWithPredicate(transform.MapID, leftRay, range, Ignored, false);

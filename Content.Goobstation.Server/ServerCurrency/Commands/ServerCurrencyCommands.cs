@@ -120,7 +120,7 @@ namespace Content.Goobstation.Server.ServerCurrency.Commands
         }
     }
 
-    [AdminCommand(AdminFlags.Host)]
+    [AdminCommand(AdminFlags.Economy)]
     public sealed class AddServerCurrencyCommand : IConsoleCommand
     {
         [Dependency] private readonly ICommonCurrencyManager _currencyMan = default!;
@@ -165,7 +165,7 @@ namespace Content.Goobstation.Server.ServerCurrency.Commands
         }
     }
 
-    [AdminCommand(AdminFlags.Host)]
+    [AdminCommand(AdminFlags.Economy)]
     public sealed class RemoveServerCurrencyCommand : IConsoleCommand
     {
         [Dependency] private readonly ICommonCurrencyManager _currencyMan = default!;
@@ -210,7 +210,7 @@ namespace Content.Goobstation.Server.ServerCurrency.Commands
         }
     }
 
-    [AdminCommand(AdminFlags.Host)]
+    [AdminCommand(AdminFlags.Economy)]
     public sealed class SetServerCurrencyCommand : IConsoleCommand
     {
         [Dependency] private readonly ICommonCurrencyManager _currencyMan = default!;
@@ -256,7 +256,7 @@ namespace Content.Goobstation.Server.ServerCurrency.Commands
         }
     }
 
-    [AdminCommand(AdminFlags.Host)]
+    [AdminCommand(AdminFlags.Economy)]
     public sealed class GetServerCurrencyCommand : IConsoleCommand
     {
         [Dependency] private readonly ICommonCurrencyManager _currencyMan = default!;

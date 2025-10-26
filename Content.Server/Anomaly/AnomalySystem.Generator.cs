@@ -209,8 +209,8 @@ public sealed partial class AnomalySystem
         var xform = Transform(uid);
 
         if (_station.GetStationInMap(xform.MapID) is not { } station ||
-            !TryComp<StationDataComponent>(station, out var data) ||
-            _station.GetLargestGrid(data) is not { } grid)
+            !TryComp<StationDataComponent>(station, out _) ||
+            _station.GetLargestGrid(station) is not { } grid)
         {
             if (xform.GridUid == null)
                 return;

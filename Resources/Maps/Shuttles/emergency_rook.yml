@@ -1,16 +1,16 @@
 meta:
   format: 7
-  category: Map
+  category: Grid
   engineVersion: 264.0.0
   forkId: ""
   forkVersion: ""
   time: 09/28/2025 11:27:45
   entityCount: 275
-maps:
-- 83
+maps: []
 grids:
 - 1
-orphans: []
+orphans:
+- 1
 nullspace: []
 tilemap:
   0: Space
@@ -29,7 +29,6 @@ entities:
       name: NT Evac Pawn
     - type: Transform
       pos: -0.515625,-0.625
-      parent: 83
     - type: MapGrid
       chunks:
         0,0:

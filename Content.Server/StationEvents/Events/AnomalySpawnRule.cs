@@ -41,10 +41,10 @@ public sealed class AnomalySpawnRule : StationEventSystem<AnomalySpawnRuleCompon
         if (!TryGetRandomStation(out var chosenStation))
             return;
 
-        if (!TryComp<StationDataComponent>(chosenStation, out var stationData))
+        if (!TryComp<StationDataComponent>(chosenStation, out _))
             return;
 
-        var grid = StationSystem.GetLargestGrid(stationData);
+        var grid = StationSystem.GetLargestGrid(chosenStation.Value);
 
         if (grid is null)
             return;

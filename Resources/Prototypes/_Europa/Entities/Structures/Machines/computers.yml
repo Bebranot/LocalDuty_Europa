@@ -24,3 +24,39 @@
     radius: 1.5
     energy: 1.6
     color: "#c94242"
+
+- type: entity
+  parent: ComputerComms
+  id: InteqComputerComms
+  name: inteq communications computer
+  description: A computer capable of communicating with everyone in the sector via the orbital ship. Use it to announce your intentions.
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: comm_inteq
+    - map: ["computerLayerKeys"]
+      state: inteq_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: AccessReader
+    access: [[ "InteQVanguardLeader" ]]
+  - type: CommunicationsConsole
+    title: comms-console-announcement-title-inteq
+    color: '#ff9900'
+    canShuttle: false
+    global: true
+    sound:
+      collection: SPCIntercom
+    initialDelay: 60
+    delay: 15
+  - type: Computer
+    board: SyndicateCommsComputerCircuitboard
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#f71713"

@@ -23,18 +23,18 @@
 
 </div>
 
-[<img src="https://github.com/AtaraxiaSpaceFoundation/asset-dump/blob/master/Misc/Discord/discord-banner.png" alt="Discord" width="150" align="left">](https://discord.gg/mk-europa)
+[<img src="https://github.com/AtaraxiaSpaceFoundation/asset-dump/blob/master/Misc/Discord/discord-banner.png" alt="Discord" width="150" align="left">](https://discord.gg/3bZte94kab)
 **[Discord Server](https://discord.gg/mk-europa)**<br>В космосе вас никто не услышит.
 
 [<img src="https://i.imgur.com/XiS9QP5.png" alt="ASF" width="150" align="left">](https://github.com/AtaraxiaSpaceFoundation)
-**[Ataraxia Space Foundation](https://github.com/AtaraxiaSpaceFoundation)**<br>Специализируемся на разработке этого билда.
+**Ataraxia Space Foundation**<br>Не специализируемся на разработке этого билда.
 
 ---
 <div align="center">
 
 ## Активность репозитория
 
-![Активность PR](https://repobeats.axiom.co/api/embed/83c43285a130f63b1240d7138a224cd4daa0b042.svg "ZZZ")
+![Активность PR](https://repobeats.axiom.co/api/embed/9b19eb0d100cd4838ab1291fb41d216b5565558d.svg "ZZZ")
 
 </div>
 

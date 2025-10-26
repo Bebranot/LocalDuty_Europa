@@ -84,6 +84,12 @@
 #  - MedkitCombat #goob - Move combat kit to research
 
 - type: latheRecipePack
+  id: EmptyMedicalSprayBottlesStatic
+  recipes:
+  - SprayBottleStypticPowder
+  - SprayBottleSilverSulfadiazine
+
+- type: latheRecipePack
   id: MedicalBoardsStatic
   recipes:
   - ElectrolysisUnitMachineCircuitboard

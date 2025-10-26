@@ -151,7 +151,6 @@
   buttonStyle: ButtonColorCentralCommandDepartment
   # Europa-End
   roles:
-  - CentralCommandOfficial
   - CBURN
   - ERTLeader
   - ERTChaplain
@@ -161,8 +160,6 @@
   - ERTEngineer
   - DeathSquad
   - HecuOperative
-  - BlueshieldOfficer # Goobstation - Start
-  - NanotrasenRepresentative
   - NanotrasenCareerTrainer
   - NavyOfficer
   - NavyCaptain
@@ -172,6 +169,28 @@
   - GovernmentMan # Goobstation - End
   editorHidden: true
 #  weight: 120 # Europa-Remove
+
+- type: department
+  id: CentralCommandPlayable
+  name: department-CentralCommand
+  description: department-CentralCommand-description
+  color: "#3eb031"
+  weight: 10
+  buttonStyle: ButtonColorCentralCommandDepartmentGreen
+  roles:
+  - CentralCommandOfficial
+  - Inspector
+
+- type: department
+  id: CentralCommandRepresentatives
+  name: department-CentralCommandRepresentatives
+  description: department-CentralCommandRepresentatives-description
+  color: "#0c344d"
+  weight: 5
+  buttonStyle: ButtonColorCentralCommandDepartment
+  roles:
+  - BlueshieldOfficer # Goobstation
+  - NanotrasenRepresentative # Goobstation
 
 - type: department
   id: Command
@@ -190,19 +209,6 @@
   - HeadOfSecurity
   - ResearchDirector
   - Quartermaster
-  - BlueshieldOfficer # Goobstation
-  - NanotrasenRepresentative # Goobstation
-  - NanotrasenCareerTrainer # Goobstation
-  - CentralCommandOfficial
-  - CBURN
-  - ERTLeader
-  - ERTChaplain
-  - ERTJanitor
-  - ERTMedical
-  - ERTSecurity
-  - ERTEngineer
-  - DeathSquad
-  - HecuOperative
   primary: false
 #  weight: 100 # Europa-Remove
 

@@ -12,8 +12,5 @@ public sealed partial class XenomorphCastePrototype : IPrototype
     public string Name = string.Empty;
 
     [DataField]
-    public ProtoId<XenomorphCastePrototype>? NeedCasteDeath;
-
-    [DataField]
     public int MaxCount;
 }

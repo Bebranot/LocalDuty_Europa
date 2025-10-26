@@ -1,1 +1,1 @@
-lavaland-inteq-sizo = Сизо-73
+lavaland-inteq-sizo = InteQ Авангард-73

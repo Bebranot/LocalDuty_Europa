@@ -235,7 +235,7 @@
   parent: SpawnPointInteQ
   id: SpawnPointInteQVanguardLeaderSizo37
   name: InteQ Vanguard Leader sleeper
-  suffix: Spawner, Sizo-73 Ghost Role, Player Appearance
+  suffix: Spawner, InteQ Vanguard-73 Ghost Role, Player Appearance
   components:
   - type: GhostTakeoverAvailable
   - type: GhostRole
@@ -266,7 +266,7 @@
   parent: SpawnPointInteQ
   id: SpawnPointInteQVanguardOperativeSizo37
   name: InteQ Vanguard Operative sleeper
-  suffix: Spawner, Sizo-73 Ghost Role, Player Appearance
+  suffix: Spawner, InteQ Vanguard-73 Ghost Role, Player Appearance
   components:
   - type: GhostTakeoverAvailable
   - type: GhostRole
@@ -297,7 +297,7 @@
   parent: SpawnPointInteQ
   id: SpawnPointInteQVanguardSoldierSizo37
   name: InteQ Vanguard Soldier sleeper
-  suffix: Spawner, Sizo-73 Ghost Role, Player Appearance
+  suffix: Spawner, InteQ Vanguard-73 Ghost Role, Player Appearance
   components:
   - type: GhostTakeoverAvailable
   - type: GhostRole
@@ -328,7 +328,7 @@
   parent: SpawnPointInteQ
   id: SpawnPointInteQVanguardMedicSizo37
   name: InteQ Vanguard Medic sleeper
-  suffix: Spawner, Sizo-73 Ghost Role, Player Appearance
+  suffix: Spawner, InteQ Vanguard-73 Ghost Role, Player Appearance
   components:
   - type: GhostTakeoverAvailable
   - type: GhostRole

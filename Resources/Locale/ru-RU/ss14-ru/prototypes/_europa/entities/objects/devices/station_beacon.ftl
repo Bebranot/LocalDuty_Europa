@@ -1,3 +1,3 @@
 ent-DefaultStationBeaconInteQSizo73 = { ent-DefaultStationBeacon }
     .desc = { ent-DefaultStationBeacon.desc }
-    .suffix = Интек, Сизо-73
+    .suffix = Интек, InteQ Авангард-73

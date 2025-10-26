@@ -219,6 +219,22 @@
 
 - type: entity
   parent: BaseFlatpack
+  id: RTGFlatpack # Europa Plus
+  name: RTG flatpack
+  description: A flatpack used for constructing a RTG.
+  components:
+  - type: Flatpack
+    entity: GeneratorRTG
+  - type: Sprite
+    layers:
+    - state: rtg
+  - type: GuideHelp
+    guides:
+    - RTG
+    - Power
+
+- type: entity
+  parent: BaseFlatpack
   id: GyroscopeFlatpack
   name: gyroscope flatpack
   description: A flatpack used for constructing a gyroscope.

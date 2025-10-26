@@ -79,6 +79,22 @@
     transferName: true
 
 - type: polymorph
+  id: MobHellPolymorph
+  configuration:
+    entity: MobHellspawn
+    forced: true
+    inventory: Drop
+    transferName: true
+
+- type: polymorph
+  id: MobSkeletonPolymorph
+  configuration:
+    entity: MobSkeletonPerson
+    forced: true
+    inventory: Transfer
+    transferName: true
+
+- type: polymorph
   id: BinglePolymorph
   configuration:
     entity: MobBingleUpgraded

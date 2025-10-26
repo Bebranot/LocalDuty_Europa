@@ -1,0 +1,6 @@
+- type: soundCollection
+  id: SPCIntercom
+  files:
+  - /Audio/_Europa/SPC/intercom1.ogg
+  - /Audio/_Europa/SPC/intercom2.ogg
+  - /Audio/_Europa/SPC/intercom3.ogg

@@ -68,6 +68,9 @@ public sealed partial class AntagPrototype : IPrototype
     [DataField, Access(typeof(SharedRoleSystem), Other = AccessPermissions.None)]
     public HashSet<JobRequirement>? Requirements;
 
+    [DataField]
+    public bool Whitelisted;
+
     /// <summary>
     /// Optional list of guides associated with this antag. If the guides are opened, the first entry in this list
     /// will be used to select the currently selected guidebook.

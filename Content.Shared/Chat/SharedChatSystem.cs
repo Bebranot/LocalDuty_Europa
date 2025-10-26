@@ -260,10 +260,8 @@ public abstract class SharedChatSystem : EntitySystem
         string? nameOverride = null,
         bool checkRadioPrefix = true,
         bool ignoreActionBlocker = false,
-        string wrappedMessagePostfix = "" // Goobstation
-    )
-    {
-    }
+        Color? colorOverride = null // Goobstation
+    ) { }
 
     protected string SanitizeMessageCapital(string message)
     {

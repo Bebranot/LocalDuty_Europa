@@ -52,18 +52,18 @@
 - type: gameMapPool
   id: DefaultMapPool
   maps:
- # Europa-Start
+  # Europa-Start
   - Aspid
   - Rook
- # Europa-End
+  # Europa-End
   - Atlas
   - Amber
   - Bagel
   - Box
   - Cluster
-  #- Core
+  - Core
   - Fland
- # - Gate Goobstation - My name is Walter Hartwell White, I live at 2308 Negra alloya line albequrque new mexico.
+  # - Gate Goobstation - My name is Walter Hartwell White, I live at 2308 Negra alloya line albequrque new mexico.
   - Loop
   - Marathon
   - Meta
@@ -72,15 +72,15 @@
   - Origin
   - Saltern
   - Packed
-  - Reach
-  #- Train # Goobstation - all my friends hate train
-  - FlandHighPop
-  - OasisHighPop
-  - Barratry # Goobstation - Re-add barratry
+  # - Reach Europa edit 2025.10.09
+  - Train # Goobstation - all my friends hate train
+  # - FlandHighPop Europa edit 2025.10.09
+  # - OasisHighPop Europa edit 2025.10.09
+  # - Barratry # Goobstation - Re-add barratry Europa edit 2025.10.09
   - Kettle # Goobstation - Re-add kettle (before it was gemini!)
-  - Submarine # goobstation - kill yourse
-  - Leonid # Goobstation - for goob by goob
+  # - Submarine # goobstation - kill yourse Europa edit 2025.10.09
+  # - Leonid # Goobstation - for goob by goob Europa edit 2025.10.10
   - Delta # Goobstation - ported from Corvax
-  - Chloris # Goobstation - also Corvax because we love goidamaps
+  # - Chloris # Goobstation - also Corvax because we love goidamaps Europa edit 2025.10.10
   - Cog # those who forget to clear their multitool
-  - Serpentcrest # Goobstation when contra
+  # - Serpentcrest # Goobstation when contra Europa edit 2025.10.10

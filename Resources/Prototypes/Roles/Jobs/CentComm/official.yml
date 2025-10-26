@@ -36,7 +36,6 @@
   name: job-name-centcomoff
   description: job-description-centcomoff
   playTimeTracker: JobCentralCommandOfficial
-  setPreference: false
   startingGear: CentcomGear
   icon: "JobIconNanotrasen"
   supervisors: job-supervisors-centcom # Goobstation
@@ -44,6 +43,9 @@
   requirements:
   - !type:AgeRequirement
     requiredAge: 21
+  - !type:DepartmentTimeRequirement
+    department: Command
+    time: 180000
   accessGroups:
   - AllAccess
   access:
@@ -54,6 +56,9 @@
   special: # Goobstation
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, DeathRattleImplantCentcomm ]
+  whitelisted: true # Europa Edit
+  weight: 30
+  alwaysUseSpawner: true
 
 - type: startingGear # Goobstation - Start - SolsticeOfTheWinter
   id: CentcomGear

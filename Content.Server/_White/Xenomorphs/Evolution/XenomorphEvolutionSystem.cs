@@ -143,21 +143,20 @@ public sealed class XenomorphEvolutionSystem : EntitySystem
         }
     }
 
-    public bool Evolve(EntityUid uid, string? evolveTo, TimeSpan evolutionDelay, bool checkNeedCasteDeath = true)
+    public bool Evolve(EntityUid uid, string? evolveTo, TimeSpan evolutionDelay)
     {
         if (evolveTo == null
             || !_protoManager.TryIndex(evolveTo, out var xenomorphPrototype)
-            || !xenomorphPrototype.TryGetComponent<XenomorphComponent>(out var xenomorph, _componentFactory)
-            || !_mind.TryGetMind(uid, out _, out _))
+            || !xenomorphPrototype.TryGetComponent<XenomorphComponent>(out var xenomorph, _componentFactory)) // Goobstation
             return false;
 
-        var ev = new BeforeXenomorphEvolutionEvent(xenomorph.Caste, checkNeedCasteDeath);
+        var ev = new BeforeXenomorphEvolutionEvent(xenomorph.Caste);
         RaiseLocalEvent(uid, ev);
 
         if (ev.Cancelled)
             return false;
 
-        var doAfterEvent = new XenomorphEvolutionDoAfterEvent(evolveTo, xenomorph.Caste, checkNeedCasteDeath);
+        var doAfterEvent = new XenomorphEvolutionDoAfterEvent(evolveTo, xenomorph.Caste);
         var doAfter = new DoAfterArgs(EntityManager, uid, evolutionDelay, doAfterEvent, uid);
 
         if (!_doAfter.TryStartDoAfter(doAfter))

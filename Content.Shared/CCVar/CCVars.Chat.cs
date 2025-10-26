@@ -37,7 +37,7 @@ public sealed partial class CCVars
         CVarDef.Create("chat.rate_limit_announce_admins_delay", 15, CVar.SERVERONLY);
 
     public static readonly CVarDef<int> ChatMaxMessageLength =
-        CVarDef.Create("chat.max_message_length", 5000, CVar.SERVER | CVar.REPLICATED); // Europa-Edit | 1000 > 5000
+        CVarDef.Create("chat.max_message_length", 1024, CVar.SERVER | CVar.REPLICATED); // Europa-Edit | 1000 > 5000
 
     public static readonly CVarDef<int> ChatMaxAnnouncementLength =
         CVarDef.Create("chat.max_announcement_length", 5000, CVar.SERVER | CVar.REPLICATED); // Europa-Edit | 512 > 3500

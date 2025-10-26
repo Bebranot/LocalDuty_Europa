@@ -46,35 +46,10 @@ public sealed class XenomorphsRuleSystem : GameRuleSystem<XenomorphsRuleComponen
     {
         base.Initialize();
 
-        SubscribeLocalEvent<XenomorphsRuleComponent, AfterAntagEntitySelectedEvent>(AfterAntagEntitySelected);
-
-        SubscribeLocalEvent<XenomorphComponent, ComponentInit>(OnXenomorphInit);
         SubscribeLocalEvent<XenomorphComponent, BeforeXenomorphEvolutionEvent>(BeforeXenomorphEvolution);
-        SubscribeLocalEvent<XenomorphComponent, AfterXenomorphEvolutionEvent>(AfterXenomorphEvolution);
 
         SubscribeLocalEvent<NukeExplodedEvent>(OnNukeExploded);
         SubscribeLocalEvent<GameRunLevelChangedEvent>(OnGameRunLevelChanged);
-    }
-
-    private void AfterAntagEntitySelected(
-        EntityUid uid,
-        XenomorphsRuleComponent component,
-        AfterAntagEntitySelectedEvent args
-    )
-    {
-        if (args.Session == null || !Exists(args.EntityUid))
-            return;
-
-        component.Xenomorphs.Add(args.EntityUid);
-    }
-
-    private void OnXenomorphInit(EntityUid uid, XenomorphComponent component, ComponentInit args)
-    {
-        var query = QueryActiveRules();
-        while (query.MoveNext(out _, out var xenomorphsRule, out _))
-        {
-            xenomorphsRule.Xenomorphs.Add(uid);
-        }
     }
 
     private void BeforeXenomorphEvolution(
@@ -86,33 +61,11 @@ public sealed class XenomorphsRuleSystem : GameRuleSystem<XenomorphsRuleComponen
         if (!_protoManager.TryIndex(args.Caste, out var cast) || cast.MaxCount == 0)
             return;
 
-        var query = QueryActiveRules();
-        while (query.MoveNext(out _, out _, out var xenomorphsRule, out _))
-        {
-            if (!xenomorphsRule.Xenomorphs.Contains(uid)
-                || GetXenomorphs(xenomorphsRule, args.Caste).Count >= cast.MaxCount
-                || cast.NeedCasteDeath != null && GetXenomorphs(xenomorphsRule, cast.NeedCasteDeath).Count > 0)
-                continue;
-
+        if (GetAllXenomorphs(args.Caste).Count < cast.MaxCount)
             return;
-        }
 
         _popup.PopupEntity(Loc.GetString("xenomorphs-evolution-no-cast-slot", ("caste", Loc.GetString(cast.Name))), uid, uid);
         args.Cancel();
-    }
-
-    private void AfterXenomorphEvolution(
-        EntityUid uid,
-        XenomorphComponent component,
-        AfterXenomorphEvolutionEvent args
-    )
-    {
-        var query = QueryActiveRules();
-        while (query.MoveNext(out _, out _, out var xenomorphsRule, out _))
-        {
-            if (xenomorphsRule.Xenomorphs.Remove(uid))
-                xenomorphsRule.Xenomorphs.Add(args.EvolvedInto);
-        }
     }
 
     private void OnNukeExploded(NukeExplodedEvent ev)
@@ -159,10 +112,10 @@ public sealed class XenomorphsRuleSystem : GameRuleSystem<XenomorphsRuleComponen
         if (component.WinType != WinType.XenoMinor)
             return;
 
-        var centcomms = _emergencyShuttle.GetCentcommMaps();
+        var centcomms = _emergencyShuttle.GetTransitHubMaps();
         var station = GetStationGrids();
 
-        var xenomorphs = GetXenomorphs(component);
+        var xenomorphs = GetAllXenomorphs();
         foreach (var xenomorph in xenomorphs)
         {
             var xform = Transform(xenomorph);
@@ -229,7 +182,7 @@ public sealed class XenomorphsRuleSystem : GameRuleSystem<XenomorphsRuleComponen
 
         if (!component.AnnouncementTime.HasValue)
         {
-            var allQueens = GetXenomorphs(component, "Queen");
+            var allQueens = GetAllXenomorphs("Queen");
             if (allQueens.Count > 0)
             {
                 component.AnnouncementTime ??= _timing.CurTime + _random.Next(component.MinTimeToAnnouncement, component.MaxTimeToAnnouncement);
@@ -255,7 +208,7 @@ public sealed class XenomorphsRuleSystem : GameRuleSystem<XenomorphsRuleComponen
         var stationGrids = GetStationGrids();
 
         var humans = GetHumans(stationGrids);
-        var xenomorphs = GetXenomorphs(component);
+        var xenomorphs = GetAllXenomorphs();
 
         if (xenomorphs.Count == 0)
         {
@@ -316,22 +269,21 @@ public sealed class XenomorphsRuleSystem : GameRuleSystem<XenomorphsRuleComponen
         return humans;
     }
 
-    private List<EntityUid> GetXenomorphs(XenomorphsRuleComponent xenomorphsRule, ProtoId<XenomorphCastePrototype>? cast = null)
+    private List<EntityUid> GetAllXenomorphs(ProtoId<XenomorphCastePrototype>? cast = null)
     {
         var xenomorphs = new List<EntityUid>();
 
-        foreach (var xenomorph in xenomorphsRule.Xenomorphs.ToList())
+        var query = EntityQueryEnumerator<XenomorphComponent>();
+
+        while (query.MoveNext(out var uid, out var comp))
         {
-            if (!Exists(xenomorph) || !TryComp<XenomorphComponent>(xenomorph, out var xenomorphComponent))
-            {
-                xenomorphsRule.Xenomorphs.Remove(xenomorph);
-                continue;
-            }
-
-            if (_mobState.IsDead(xenomorph) || cast.HasValue && xenomorphComponent.Caste != cast)
+            if (!Exists(uid))
                 continue;
 
-            xenomorphs.Add(xenomorph);
+            if (_mobState.IsDead(uid) || cast.HasValue && comp.Caste != cast)
+                continue;
+
+            xenomorphs.Add(uid);
         }
 
         return xenomorphs;
@@ -342,7 +294,7 @@ public sealed class XenomorphsRuleSystem : GameRuleSystem<XenomorphsRuleComponen
         var stationGrids = new HashSet<EntityUid>();
         foreach (var station in _gameTicker.GetSpawnableStations())
         {
-            if (TryComp<StationDataComponent>(station, out var data) && _station.GetLargestGrid(data) is { } grid)
+            if (TryComp<StationDataComponent>(station, out _) && _station.GetLargestGrid(station) is { } grid)
                 stationGrids.Add(grid);
         }
 

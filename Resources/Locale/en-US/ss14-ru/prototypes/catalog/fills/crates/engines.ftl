@@ -27,3 +27,5 @@ ent-CrateEngineeringTeslaCoil = tesla coil crate
     .desc = Tesla coil. Attracts lightning and generates energy from it.
 ent-CrateEngineeringTeslaGroundingRod = tesla grounding rod crate
     .desc = Grounding rod, best for lightning protection.
+ent-CrateEngineeringRTG = RTG crate
+    .desc = Radioisotope Thermoelectric Generator, best for when batteries just give up.

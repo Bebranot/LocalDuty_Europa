@@ -609,3 +609,14 @@
       state: cpu_science
     - type: ComputerBoard
       prototype: StationAiUploadComputer
+
+- type: entity
+  parent: [ BaseComputerCircuitboard, BaseMajorContraband ]
+  id: InteqCommsComputerCircuitboard
+  name: inteq communications computer board
+  description: A computer printed circuit board for a InteQ communications console.
+  components:
+  - type: Sprite
+    state: cpu_inteq
+  - type: ComputerBoard
+    prototype: InteqComputerComms

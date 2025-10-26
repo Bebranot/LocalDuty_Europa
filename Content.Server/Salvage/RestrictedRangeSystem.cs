@@ -41,7 +41,7 @@ public sealed class RestrictedRangeSystem : SharedRestrictedRangeSystem
             boundaryUid,
             cShape,
             "boundary",
-            collisionLayer: (int) (CollisionGroup.HighImpassable | CollisionGroup.Impassable | CollisionGroup.LowImpassable),
+            collisionLayer: (int) (CollisionGroup.Impassable | CollisionGroup.HighImpassable | CollisionGroup.MidImpassable | CollisionGroup.LowImpassable),
             body: boundaryPhysics);
         _physics.WakeBody(boundaryUid, body: boundaryPhysics);
         AddComp<BoundaryComponent>(boundaryUid);

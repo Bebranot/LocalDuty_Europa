@@ -2042,6 +2042,36 @@
                     0.3
                 ]
             ]
+        },
+        {
+            "name": "comm_inteq",
+            "directions": 4,
+            "delays": [
+                [
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "inteq_key",
+            "directions": 4
+        },
+        {
+            "name": "inteq_key_off",
+            "directions": 4
         }
     ]
 }

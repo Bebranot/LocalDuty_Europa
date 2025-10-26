@@ -20,12 +20,13 @@
     <GuideEntityEmbed Entity="MobRodentia" Caption="Родентия"/>
   </Box>
   <Box>
-    <GuideEntityEmbed Entity="MobSlimePerson" Caption="Слаймолюд"/>
-    <GuideEntityEmbed Entity="MobTajaran" Caption="Таяр"/>
-    <GuideEntityEmbed Entity="MobVox" Caption="Вокс"/>
-    <GuideEntityEmbed Entity="MobVulpkanin" Caption="Вульпканин"/>
-    <GuideEntityEmbed Entity="MobYowie" Caption="Йови"/>
-    <GuideEntityEmbed Entity="MobChitinid" Caption="Хитинид"/>
+    <GuideEntityEmbed Entity="MobSlimePerson" Caption="Slime Person"/>
+    <GuideEntityEmbed Entity="MobTajaran" Caption="Tajaran"/>
+    <GuideEntityEmbed Entity="MobVox" Caption="Vox"/>
+    <GuideEntityEmbed Entity="MobVulpkanin" Caption="Vulpkanin"/>
+    <GuideEntityEmbed Entity="MobYowie" Caption="Yowie"/>
+    <GuideEntityEmbed Entity="MobChitinid" Caption="Chitinid"/>
+    <GuideEntityEmbed Entity="MobFeroxi" Caption="Feroxi"/>
   </Box>
 
 </Document>

@@ -176,7 +176,10 @@ namespace Content.Server.Database
         public DbSet<AdminNote> AdminNotes { get; set; } = null!;
         public DbSet<AdminWatchlist> AdminWatchlists { get; set; } = null!;
         public DbSet<AdminMessage> AdminMessages { get; set; } = null!;
-        public DbSet<RoleWhitelist> RoleWhitelists { get; set; } = null!;
+
+        public DbSet<RoleWhitelist> RoleWhitelist { get; set; } = null!;
+        public DbSet<RoleWhitelistLog> RoleWhitelistLog { get; set; } = null!;
+
         public DbSet<BanTemplate> BanTemplate { get; set; } = null!;
         public DbSet<IPIntelCache> IPIntelCache { get; set; } = null!;
 
@@ -467,13 +470,6 @@ namespace Content.Server.Database
                 .HasPrincipalKey(author => author.UserId)
                 .OnDelete(DeleteBehavior.SetNull);
 
-            modelBuilder.Entity<RoleWhitelist>()
-                .HasOne(w => w.Player)
-                .WithMany(p => p.JobWhitelists)
-                .HasForeignKey(w => w.PlayerUserId)
-                .HasPrincipalKey(p => p.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
-
             // Changes for modern HWID integration
             modelBuilder.Entity<Player>()
                 .OwnsOne(p => p.LastSeenHWId)
@@ -568,6 +564,19 @@ namespace Content.Server.Database
                 .HasForeignKey(l => l.DiscordId)
                 .HasPrincipalKey(p => p.Id)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<RoleWhitelist>(entity =>
+            {
+                entity.HasKey(e => e.RoleWhitelistId);
+                entity.HasIndex(e => e.PlayerId).IsUnique();
+            });
+
+            modelBuilder.Entity<RoleWhitelistLog>(entity =>
+            {
+                entity.HasKey(e => e.RoleWhitelistLogId);
+                entity.HasIndex(e => e.PlayerId);
+                entity.HasIndex(e => e.AdminId);
+            });
         }
 
         public virtual IQueryable<AdminLog> SearchLogs(IQueryable<AdminLog> query, string searchText)
@@ -799,7 +808,6 @@ namespace Content.Server.Database
         public List<ServerBan> AdminServerBansLastEdited { get; set; } = null!;
         public List<ServerRoleBan> AdminServerRoleBansCreated { get; set; } = null!;
         public List<ServerRoleBan> AdminServerRoleBansLastEdited { get; set; } = null!;
-        public List<RoleWhitelist> JobWhitelists { get; set; } = null!;
 
         // RMC14
         public RMCLinkedAccount? LinkedAccount { get; set; }
@@ -1421,15 +1429,77 @@ namespace Content.Server.Database
         public bool Dismissed { get; set; }
     }
 
-    [PrimaryKey(nameof(PlayerUserId), nameof(RoleId))]
+    [Index(nameof(PlayerId), IsUnique = true)]
+    [Table("role_whitelist")]
     public class RoleWhitelist
     {
-        [Required, ForeignKey("Player")]
-        public Guid PlayerUserId { get; set; }
-        public Player Player { get; set; } = default!;
+        [Required]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Column("role_whitelist_id")]
+        public int RoleWhitelistId { get; set; }
 
         [Required]
-        public string RoleId { get; set; } = default!;
+        [Column("player_id", TypeName = "uuid")]
+        public Guid PlayerId { get; set; }
+
+        [Required]
+        [Column("in_whitelist", TypeName = "boolean")]
+        public bool InWhitelist { get; set; } = false;
+
+        [Required]
+        [Column("how_many_times_added", TypeName = "integer")]
+        public int HowManyTimesAdded { get; set; } = 0;
+
+        [Required]
+        [Column("first_time_added", TypeName = "timestamp with time zone")]
+        public DateTime FirstTimeAdded { get; set; }
+
+        [Required]
+        [Column("last_time_added", TypeName = "timestamp with time zone")]
+        public DateTime LastTimeAdded { get; set; }
+
+        [Column("last_time_removed", TypeName = "timestamp with time zone")]
+        public DateTime? LastTimeRemoved { get; set; }
+
+        [Required]
+        [Column("first_time_added_by", TypeName = "uuid")]
+        public Guid FirstTimeAddedBy { get; set; }
+
+        [Required]
+        [Column("last_time_added_by", TypeName = "uuid")]
+        public Guid LastTimeAddedBy { get; set; }
+
+        [Column("last_time_removed_by", TypeName = "uuid")]
+        public Guid? LastTimeRemovedBy { get; set; }
+    }
+
+    [Index(nameof(PlayerId))]
+    [Index(nameof(AdminId))]
+    [Table("role_whitelist_log")]
+    public class RoleWhitelistLog
+    {
+        [Required]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Column("role_whitelist_log_id")]
+        public int RoleWhitelistLogId { get; set; }
+
+        [Required]
+        [Column("admin_id", TypeName = "uuid")]
+        public Guid AdminId { get; set; }
+
+        [Required]
+        [Column("player_id", TypeName = "uuid")]
+        public Guid PlayerId { get; set; }
+
+        [Required]
+        [Column("role_whitelist_action", TypeName = "text")]
+        public string RoleWhitelistAction { get; set; } = string.Empty;
+
+        [Required]
+        [Column("time", TypeName = "timestamp with time zone")]
+        public DateTime Time { get; set; }
     }
 
     /// <summary>

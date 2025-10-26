@@ -148,21 +148,18 @@ namespace Content.Server.RoundEnd
         /// </summary>
         public EntityUid? GetStation()
         {
-            AllEntityQuery<StationEmergencyShuttleComponent, StationDataComponent>().MoveNext(out _, out _, out var data);
+            AllEntityQuery<StationEmergencyShuttleComponent, StationDataComponent>().MoveNext(out var uid, out _, out var data);
             if (data == null)
                 return null;
-            var targetGrid = _stationSystem.GetLargestGrid(data);
+            var targetGrid = _stationSystem.GetLargestGrid(uid);
             return targetGrid == null ? null : Transform(targetGrid.Value).MapUid;
         }
 
-        /// <summary>
-        ///     Attempts to get centcomm's MapUid
-        /// </summary>
-        public EntityUid? GetCentcomm()
+        public EntityUid? GetTransitHub()
         {
-            AllEntityQuery<StationCentcommComponent>().MoveNext(out var centcomm);
+            AllEntityQuery<StationTransitHubComponent>().MoveNext(out var transitHub);
 
-            return centcomm == null ? null : centcomm.MapEntity;
+            return transitHub?.MapEntity;
         }
 
         public bool CanCallOrRecall()
@@ -255,7 +252,7 @@ namespace Content.Server.RoundEnd
                 var payload = new NetworkPayload
                 {
                     [ShuttleTimerMasks.ShuttleMap] = shuttle,
-                    [ShuttleTimerMasks.SourceMap] = GetCentcomm(),
+                    [ShuttleTimerMasks.SourceMap] = GetTransitHub(),
                     [ShuttleTimerMasks.DestMap] = GetStation(),
                     [ShuttleTimerMasks.ShuttleTime] = countdownTime,
                     [ShuttleTimerMasks.SourceTime] = countdownTime + TimeSpan.FromSeconds(_shuttle.TransitTime + _cfg.GetCVar(CCVars.EmergencyShuttleDockTime)),
@@ -301,7 +298,7 @@ namespace Content.Server.RoundEnd
                 var payload = new NetworkPayload
                 {
                     [ShuttleTimerMasks.ShuttleMap] = shuttle,
-                    [ShuttleTimerMasks.SourceMap] = GetCentcomm(),
+                    [ShuttleTimerMasks.SourceMap] = GetTransitHub(),
                     [ShuttleTimerMasks.DestMap] = GetStation(),
                     [ShuttleTimerMasks.ShuttleTime] = zero,
                     [ShuttleTimerMasks.SourceTime] = zero,

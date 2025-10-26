@@ -10,3 +10,5 @@ ent-ClothingNeckWhiteMantleCaptain = белая мантия капитана
     .desc = Мантия капитана, с белым пухом.
 ent-ClothingNeckMantleCaptainWhiteShoulder = белая наплечная мантия капитана
     .desc = Идеальная белая наплечная мантия для капитана. Чистота придает ей брутальность.
+ent-ClothingNeckMantleRDShoulder = research director's shoulder mantle
+    .desc = The perfect research director's shoulder mantle. Research makes this mantle sinister.

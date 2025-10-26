@@ -132,6 +132,7 @@
     - MedicalStatic
     - MedicalClothingStatic
     - EmptyMedkitsStatic
+    - EmptyMedicalSprayBottlesStatic
     - SurgeryStatic
     - ParamedHypoStatic
     - MedicalPatchesStatic

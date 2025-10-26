@@ -350,6 +350,9 @@
     },
     {
       "name": "supply"
+    },
+    {
+      "name": "cpu_inteq"
     }
   ]
 }

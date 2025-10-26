@@ -65,7 +65,7 @@
   components:
   - type: Sprite
     sprite: Objects/Misc/module.rsi
-    state: charger_APC
+    state: engineering
   - type: StaticPrice
     price: 20
   - type: PhysicalComposition
@@ -85,7 +85,7 @@
   components:
     - type: Sprite
       sprite: Objects/Misc/module.rsi
-      state: charger_APC
+      state: engineering
     - type: StaticPrice
       price: 40
     - type: Tag

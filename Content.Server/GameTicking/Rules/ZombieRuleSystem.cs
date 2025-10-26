@@ -286,7 +286,7 @@ public sealed class ZombieRuleSystem : GameRuleSystem<ZombieRuleComponent>
         {
             foreach (var station in _gameTicker.GetSpawnableStations())  // Einstein Engines - Zombie Improvements Take 2
             {
-                if (TryComp<StationDataComponent>(station, out var data) && _station.GetLargestGrid(data) is { } grid)
+                if (TryComp<StationDataComponent>(station, out _) && _station.GetLargestGrid(station) is { } grid)
                     stationGrids.Add(grid);
             }
         }

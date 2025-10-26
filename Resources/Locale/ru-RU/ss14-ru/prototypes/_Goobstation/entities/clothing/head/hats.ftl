@@ -1,6 +1,6 @@
-ent-ClothingHeadHatBeretEliteNavyOfficer = элитный берет офицера ЦентКом
+ent-ClothingHeadHatBeretEliteNavyOfficer = элитный берет офицера ЦК
     .desc = Тёмно-синий берет с серебряным щитом сил безопасности НаноТрейзен.
-ent-ClothingHeadHatBeretNavyOfficer = берет офицера ЦентКом
+ent-ClothingHeadHatBeretNavyOfficer = берет офицера ЦК
     .desc = Чёрный берет с серебряным щитом сил безопасности НаноТрейзен.
 ent-ClothingHeadHatBeretNavyCaptain = берет капитана военно-космического флота
     .desc = Белый как крахмальная рубашка.

@@ -11,6 +11,7 @@
   - InteQVanguard
   - InteQVanguardLeader
   - Maintenance
+  whitelisted: true # Europa Edit
 
 - type: job
   id: InteQVanguard
@@ -24,3 +25,4 @@
   access:
   - InteQVanguard
   - Maintenance
+  whitelisted: true # Europa Edit

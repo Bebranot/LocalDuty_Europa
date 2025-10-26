@@ -18,12 +18,12 @@ public sealed class CatEmoteSpamCountermeasureSystem : EntitySystem
     [Dependency] private readonly ThunderstrikeSystem _thunderstrike = default!;
     [Dependency] private readonly IRobustRandom _rand = default!;
 
-    private const float ClearInterval = 20.0f;
+    private const float ClearInterval = 3.0f;
     private const float PitchModulo = 0.08f;
     private const int LowerBound = 2; // Shoo away any shits with server vv from killing everyone on 1 emote
 
     [ViewVariables(VVAccess.ReadWrite)]
-    private int _hardEmoteThreshold = 20;
+    private int _hardEmoteThreshold = 3;
 
     [ViewVariables(VVAccess.ReadWrite)]
     private int _softThresholdVariance = 10;

@@ -1,1 +1,1 @@
-station-beacon-sizo-73 = Сизо-73
+station-beacon-sizo-73 = InteQ Авангард-73

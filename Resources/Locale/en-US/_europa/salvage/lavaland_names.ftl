@@ -1,1 +1,1 @@
-lavaland-inteq-sizo = Sizo-73
+lavaland-inteq-sizo = InteQ Vanguard-73

@@ -79,6 +79,7 @@ using Content.Server.Popups;
 using Content.Shared.Verbs;
 using Robust.Shared.Collections;
 using Content.Shared.Ghost.Roles.Components;
+using Content.Shared.Roles.Jobs;
 
 namespace Content.Server.Ghost.Roles;
 
@@ -639,6 +640,18 @@ public sealed class GhostRoleSystem : EntitySystem
                 ? _timing.CurTime.Add(raffle.Countdown)
                 : TimeSpan.MinValue;
 
+            var whitelisted = false;
+            if (role.JobProto != null && _prototype.TryIndex(role.JobProto, out var jobPrototype))
+                whitelisted |= jobPrototype.Whitelisted;
+            if (TryComp(uid, out MindRoleComponent? mindRole))
+            {
+                if (_prototype.TryIndex(mindRole.JobPrototype, out var jobProto))
+                    whitelisted |= jobProto.Whitelisted;
+                if (_prototype.TryIndex(mindRole.AntagPrototype, out var antagProto))
+                    whitelisted |= antagProto.Whitelisted;
+            }
+
+
             roles.Add(new GhostRoleInfo
             {
                 Identifier = id,
@@ -646,6 +659,7 @@ public sealed class GhostRoleSystem : EntitySystem
                 Description = role.RoleDescription,
                 Rules = role.RoleRules,
                 Requirements = role.Requirements,
+                Whitelisted = whitelisted,
                 Kind = kind,
                 RafflePlayerCount = rafflePlayerCount,
                 RaffleEndTime = raffleEndTime
@@ -802,7 +816,7 @@ public sealed class GhostRoleSystem : EntitySystem
 
         var mind = EnsureComp<MindContainerComponent>(uid);
 
-        if (mind.HasMind)
+        if (mind.HasMind && !component.IgnoreMindCheck) // Goobstation edit
         {
             args.TookRole = false;
             return;
@@ -887,6 +901,11 @@ public sealed class GhostRoleSystem : EntitySystem
         }
 
         SetMode(entity.Owner, ghostRoleProto, ghostRoleProto.Name, entity.Comp);
+    }
+
+    public void SetTaken(GhostRoleComponent role, bool taken) // Goobstation
+    {
+        role.Taken = taken;
     }
 }
 

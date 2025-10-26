@@ -110,7 +110,7 @@ public sealed class JobRequirementsManager : ISharedPlaytimeManager
 
     private readonly Dictionary<string, TimeSpan> _roles = new();
     private readonly List<string> _roleBans = new();
-    private readonly List<string> _jobWhitelists = new();
+    private bool _whitelisted;
 
     private ISawmill _sawmill = default!;
 
@@ -123,7 +123,7 @@ public sealed class JobRequirementsManager : ISharedPlaytimeManager
         // Yeah the client manager handles role bans and playtime but the server ones are separate DEAL.
         _net.RegisterNetMessage<MsgRoleBans>(RxRoleBans);
         _net.RegisterNetMessage<MsgPlayTime>(RxPlayTime);
-        _net.RegisterNetMessage<MsgJobWhitelist>(RxJobWhitelist);
+        _net.RegisterNetMessage<MsgRoleWhitelist>(RxJobWhitelist);
 
         _client.RunLevelChanged += ClientOnRunLevelChanged;
     }
@@ -134,7 +134,7 @@ public sealed class JobRequirementsManager : ISharedPlaytimeManager
         {
             // Reset on disconnect, just in case.
             _roles.Clear();
-            _jobWhitelists.Clear();
+            _whitelisted = false;
             _roleBans.Clear();
         }
     }
@@ -166,10 +166,9 @@ public sealed class JobRequirementsManager : ISharedPlaytimeManager
         Updated?.Invoke();
     }
 
-    private void RxJobWhitelist(MsgJobWhitelist message)
+    private void RxJobWhitelist(MsgRoleWhitelist message)
     {
-        _jobWhitelists.Clear();
-        _jobWhitelists.AddRange(message.Whitelist);
+        _whitelisted = message.Whitelist;
         Updated?.Invoke();
     }
 
@@ -225,7 +224,7 @@ public sealed class JobRequirementsManager : ISharedPlaytimeManager
         if (!_cfg.GetCVar(CCVars.GameRoleWhitelist))
             return true;
 
-        if (job.Whitelisted && !_jobWhitelists.Contains(job.ID))
+        if (job.Whitelisted && !_whitelisted)
         {
             reason = FormattedMessage.FromUnformatted(Loc.GetString("role-not-whitelisted"));
             return false;
@@ -260,5 +259,10 @@ public sealed class JobRequirementsManager : ISharedPlaytimeManager
         }
 
         return _roles;
+    }
+
+    public bool IsWhitelisted()
+    {
+        return _whitelisted;
     }
 }

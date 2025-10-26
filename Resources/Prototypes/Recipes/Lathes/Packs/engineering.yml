@@ -92,6 +92,7 @@
   - PortableScrubberMachineCircuitBoard
   - SolarControlComputerCircuitboard
   - SolarTrackerElectronics
+  - WallmountGeneratorElectronics # Europa Plus
   - GasRecyclerMachineCircuitboard
   - PortableGeneratorPacmanMachineCircuitboard
   - PortableGeneratorSuperPacmanMachineCircuitboard

@@ -34,11 +34,11 @@
   components:
   - type: Objective
     icon:
-      sprite: Objects/Economy/cash.rsi
-      state: cash_5000
+      sprite: Structures/Furniture/Altars/Cults/fangs.rsi
+      state: blood # WTF Cash?!
   - type: NumberObjective
-    min: 150
-    max: 200
+    min: 300
+    max: 500
     title: objective-condition-weight-title
     description: objective-condition-weight-description
   - type: MeetContractWeightCondition

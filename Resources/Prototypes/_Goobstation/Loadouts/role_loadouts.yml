@@ -89,6 +89,44 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: roleLoadout
+  id: JobCentralCommandOfficial
+  groups:
+  - GroupTankHarness
+  - Trinkets
+  - Animals
+  - GroupSpeciesBreathTool
+  - Survival
+  # Goobstation - EE Plasmeme Change.
+  - CentComOfficerEnvirohelm
+  - CentComOfficerEnvirosuit
+  - CentComOfficerEnvirogloves
+  # shit warning
+  - NanotrasenRepresentativeHead
+  - NanotrasenRepresentativeBackpack
+  - NanotrasenRepresentativeNeck
+  - NanotrasenRepresentativeShoes
+  - NanotrasenRepresentativeBelt
+
+- type: roleLoadout
+  id: JobInspector
+  groups:
+  - GroupTankHarness
+  - Trinkets
+  - Animals
+  - GroupSpeciesBreathTool
+  - Survival
+  # Goobstation - EE Plasmeme Change.
+  - CentComOfficerEnvirohelm
+  - CentComOfficerEnvirosuit
+  - CentComOfficerEnvirogloves
+  # shit warning
+  - NanotrasenRepresentativeHead
+  - NanotrasenRepresentativeBackpack
+  - NanotrasenRepresentativeNeck
+  - NanotrasenRepresentativeShoes
+  - NanotrasenRepresentativeBelt
+
+- type: roleLoadout
   id: JobNanotrasenRepresentative
   groups:
   - GroupTankHarness

@@ -131,6 +131,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Net;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices.JavaScript;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
@@ -1945,61 +1946,138 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
 
         #endregion
 
-        #region Job Whitelists
+        #region Job Whitelist
 
-        public async Task<bool> AddJobWhitelist(Guid player, ProtoId<JobPrototype> job)
+        public async Task<bool> ToggleRoleWhitelist(Guid player, Guid admin)
         {
             await using var db = await GetDb();
-            var exists = await db.DbContext.RoleWhitelists
-                .Where(w => w.PlayerUserId == player)
-                .Where(w => w.RoleId == job.Id)
-                .AnyAsync();
 
-            if (exists)
-                return false;
+            var exists = await db.DbContext.RoleWhitelist
+                .FirstOrDefaultAsync(w => w.PlayerId == player);
+
+            if (exists == null)
+            {
+                var whitelist = new RoleWhitelist
+                {
+                    PlayerId = player,
+                    InWhitelist = true,
+                    HowManyTimesAdded = 1,
+                    FirstTimeAdded = DateTime.UtcNow,
+                    LastTimeAdded = DateTime.UtcNow,
+                    FirstTimeAddedBy = admin,
+                    LastTimeAddedBy = admin,
+                };
+                db.DbContext.RoleWhitelist.Add(whitelist);
+            }
+            else
+            {
+                if (exists.InWhitelist)
+                {
+                    exists.InWhitelist = false;
+                    exists.LastTimeRemoved = DateTime.UtcNow;
+                    exists.LastTimeRemovedBy = admin;
+                }
+                else
+                {
+                    exists.InWhitelist = true;
+                    exists.HowManyTimesAdded += 1;
+                    exists.LastTimeAdded = DateTime.UtcNow;
+                    exists.LastTimeAddedBy = admin;
+                }
+
+            }
+
+            var saved = await db.DbContext.SaveChangesAsync();
+            return saved > 0;
+        }
+
+        public async Task<RoleWhitelist?> GetRoleWhitelist(Guid player, CancellationToken cancel)
+        {
+            await using var db = await GetDb(cancel);
+            return await db.DbContext.RoleWhitelist.FirstOrDefaultAsync(w => w.PlayerId == player, cancellationToken: cancel);
+        }
+
+        public async Task<bool> IsPlayerRoleWhitelisted(Guid player)
+        {
+            await using var db = await GetDb();
+            var whitelist = await db.DbContext.RoleWhitelist.FirstOrDefaultAsync(w => w.PlayerId == player);
+            return whitelist?.InWhitelist ?? false;
+        }
+
+        public async Task<bool> AddToRoleWhitelist(Guid player, Guid admin)
+        {
+            await using var db = await GetDb();
+            var entry = await db.DbContext.RoleWhitelist.FirstOrDefaultAsync(w => w.PlayerId == player);
+
+            if (entry != null)
+            {
+                if (entry.InWhitelist)
+                    return true;
+
+                entry.InWhitelist = true;
+                entry.HowManyTimesAdded += 1;
+                entry.LastTimeAdded = DateTime.UtcNow;
+                entry.LastTimeAddedBy = admin;
+
+                await db.DbContext.SaveChangesAsync();
+                return true;
+            }
 
             var whitelist = new RoleWhitelist
             {
-                PlayerUserId = player,
-                RoleId = job
+                PlayerId = player,
+                InWhitelist = true,
+                HowManyTimesAdded = 1,
+                FirstTimeAdded = DateTime.UtcNow,
+                LastTimeAdded = DateTime.UtcNow,
+                FirstTimeAddedBy = admin,
+                LastTimeAddedBy = admin,
             };
-            db.DbContext.RoleWhitelists.Add(whitelist);
+
+            db.DbContext.RoleWhitelist.Add(whitelist);
+
             await db.DbContext.SaveChangesAsync();
             return true;
         }
 
-        public async Task<List<string>> GetJobWhitelists(Guid player, CancellationToken cancel)
-        {
-            await using var db = await GetDb(cancel);
-            return await db.DbContext.RoleWhitelists
-                .Where(w => w.PlayerUserId == player)
-                .Select(w => w.RoleId)
-                .ToListAsync(cancellationToken: cancel);
-        }
-
-        public async Task<bool> IsJobWhitelisted(Guid player, ProtoId<JobPrototype> job)
+        public async Task<bool> RemoveFromRoleWhitelist(Guid player, Guid admin)
         {
             await using var db = await GetDb();
-            return await db.DbContext.RoleWhitelists
-                .Where(w => w.PlayerUserId == player)
-                .Where(w => w.RoleId == job.Id)
-                .AnyAsync();
-        }
-
-        public async Task<bool> RemoveJobWhitelist(Guid player, ProtoId<JobPrototype> job)
-        {
-            await using var db = await GetDb();
-            var entry = await db.DbContext.RoleWhitelists
-                .Where(w => w.PlayerUserId == player)
-                .Where(w => w.RoleId == job.Id)
-                .SingleOrDefaultAsync();
+            var entry = await db.DbContext.RoleWhitelist.FirstOrDefaultAsync(w => w.PlayerId == player);
 
             if (entry == null)
                 return false;
 
-            db.DbContext.RoleWhitelists.Remove(entry);
+            entry.InWhitelist = false;
+            entry.LastTimeRemoved = DateTime.UtcNow;
+            entry.LastTimeRemovedBy = admin;
+
             await db.DbContext.SaveChangesAsync();
             return true;
+        }
+
+        public async Task<bool> AddRoleWhitelistLog(Guid admin, Guid player, string action)
+        {
+            await using var db = await GetDb();
+
+            var log = new RoleWhitelistLog
+            {
+                AdminId = admin,
+                PlayerId = player,
+                RoleWhitelistAction = action,
+                Time = DateTime.UtcNow,
+            };
+
+            db.DbContext.RoleWhitelistLog.Add(log);
+
+            await db.DbContext.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<List<RoleWhitelist>> GetAllRoleWhitelists(CancellationToken cancel)
+        {
+            await using var db = await GetDb(cancel);
+            return await db.DbContext.RoleWhitelist.ToListAsync(cancellationToken: cancel);
         }
 
         #endregion
@@ -2102,9 +2180,8 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
             await db.DbContext.SaveChangesAsync();
         }
 
-        public async Task<(string Message, string User)?> GetRandomLobbyMessage()
+        public async Task<List<(string Message, string User)>> GetLobbyMessages()
         {
-            // TODO RMC14 the random row is evaluated outside the DB, if we have that many patrons I guess we have better problems!
             await using var db = await GetDb();
             var messages = await db.DbContext.RMCPatronLobbyMessages
                 .Include(p => p.Patron)
@@ -2112,18 +2189,14 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
                 .Where(p => p.Patron.Tier.LobbyMessage)
                 .Where(p => !string.IsNullOrWhiteSpace(p.Message))
                 .Select(p => new { p.Message, p.Patron.Player.LastSeenUserName })
+                .Select(p => new ValueTuple<string, string>(p.Message, p.LastSeenUserName))
                 .ToListAsync();
 
-            if (messages.Count == 0)
-                return null;
-
-            var random = messages[Random.Shared.Next(messages.Count)];
-            return (random.Message, random.LastSeenUserName);
+            return messages;
         }
 
-        public async Task<string?> GetRandomShoutout()
+        public async Task<List<string>> GetShoutouts()
         {
-            // TODO RMC14 the random row is evaluated outside the DB, if we have that many patrons I guess we have better problems!
             await using var db = await GetDb();
             var ntNames = await db.DbContext.RMCPatronRoundEndNTShoutouts
                 .Include(p => p.Patron)
@@ -2132,12 +2205,7 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
                 .Select(p => p.Name)
                 .ToListAsync();
 
-            var ntName = ntNames.Count == 0 ? null : ntNames[Random.Shared.Next(ntNames.Count)];
-
-            if (ntName == null)
-                ntName = "John Nanotrasen";
-
-            return (ntName);
+            return ntNames;
         }
 
         #endregion

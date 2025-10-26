@@ -33,6 +33,12 @@
   # - type: GuideHelp
   #   guides:
   #   - XenomorphDrone
+  - type: MeleeWeapon
+    damage:
+      groups:
+        Brute: 25
+      types:
+        Structural: 30
 
 - type: entity
   parent: BaseMobXenomorphDrone

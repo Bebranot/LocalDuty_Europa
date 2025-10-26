@@ -4,7 +4,7 @@
   - MobDamageable
   - MobPolymorphable
   - MobCombat
-  - MobBloodstream
+  - XenomorphBloodstream # Goob, uses custom bloodstream so we can disable bleeding for the time being.
   - MobFlammable
   id: BaseMobXenomorph
   abstract: true
@@ -12,10 +12,10 @@
   - type: Xenomorph
     weedHeal: # Goobstation - nerfed healing
       groups:
-        Burn: -2
-        Toxin: -3
+        Burn: -3
+        Toxin: -5
         Airloss: -10
-        Brute: -3
+        Brute: -4
   - type: Pinpointer
     whitelist:
       components:
@@ -65,8 +65,8 @@
   - type: SlowOnDamage
     speedModifierThresholds:
       105: 0.9
-      125: 0.7
-      150: 0.6
+      125: 0.8
+      150: 0.7
   - type: Damageable
     damageContainer: Biological
     damageModifierSet: Xenomorph
@@ -92,6 +92,7 @@
     bloodlossHealDamage:
       types:
         Bloodloss: -1
+    bleedReductionAmount: 5  #goob
   - type: MeleeWeapon
     altDisarm: true
     angle: 0
@@ -100,7 +101,9 @@
     animation: WeaponArcBite
     damage:
       groups:
-        Brute: 25
+        Brute: 30
+      types:
+        Structural: 15
   - type: TypingIndicator
     proto: alien
   - type: Temperature

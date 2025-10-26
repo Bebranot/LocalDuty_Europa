@@ -18,7 +18,10 @@
   - type: TailLash
     tailDamage:
       groups:
-        Brute: 5
+        Brute: 55
+      types:
+        Slash: 50
+        Structural: 100
     inject:
       ChloralHydrate: 5 # Goobstation - new chemical
   #- type: ActionGrant # Goobstation - moved to organs
@@ -54,9 +57,13 @@
       270: 0.7
       315: 0.6
   - type: MeleeWeapon
+    range: 2.5
     damage:
       groups:
-        Brute: 30
+        Brute: 40
+      types:
+        Slash: 40
+        Structural: 40
   # - type: GuideHelp
   #   guides:
   #   - XenomorphPraetorian

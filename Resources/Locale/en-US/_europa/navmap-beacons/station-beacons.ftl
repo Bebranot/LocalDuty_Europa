@@ -1,1 +1,1 @@
-station-beacon-sizo-73 = Sizo-73
+station-beacon-sizo-73 = InteQ Vanguard-73

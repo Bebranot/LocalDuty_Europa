@@ -55,3 +55,10 @@
   parent: BaseHydroToolRecipe
   id: HydroponicsToolClippers
   result: HydroponicsToolClippers
+
+# Europa-Start
+- type: latheRecipe
+  parent: BaseHydroToolRecipe
+  id: PlantAnalyzer
+  result: PlantAnalyzer
+# Europa-End

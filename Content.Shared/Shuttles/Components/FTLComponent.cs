@@ -72,4 +72,10 @@ public sealed partial class FTLComponent : Component
 
     [DataField]
     public EntityUid? TravelStream;
+
+    [DataField]
+    public bool Ignored;
+
+    [DataField]
+    public bool DeleteTrash;
 }

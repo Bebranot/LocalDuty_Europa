@@ -32,6 +32,7 @@
 // SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
 // SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
+// SPDX-FileCopyrightText: 2025 Avalon <jfbentley1@gmail.com>
 // SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Aviu00 <aviu00@protonmail.com>
 // SPDX-FileCopyrightText: 2025 BramvanZijp <56019239+BramvanZijp@users.noreply.github.com>
@@ -248,6 +249,11 @@ public abstract partial class SharedStaminaSystem : EntitySystem
             // raise event for each entity hit
             RaiseLocalEvent(ent, ref hitEvent);
 
+            // Begin DeltaV additions
+            // Allow users to modifier stamina damage as well, this part of the event is not handle-able by listeners.
+            RaiseLocalEvent(args.User, ref hitEvent);
+            // End DeltaV additions
+
             var damageImmediate = component.Damage;
             var damageOvertime = component.Overtime;
             damageImmediate *= hitEvent.Value;
@@ -424,7 +430,8 @@ public abstract partial class SharedStaminaSystem : EntitySystem
 
         if (value <= 0)
             return;
-        if (source != null)
+
+        if (source != null && source != uid)
         {
             _adminLogger.Add(LogType.Stamina, $"{ToPrettyString(source.Value):user} caused {value} stamina damage to {ToPrettyString(uid):target}{(with != null ? $" using {ToPrettyString(with.Value):using}" : "")}");
         }

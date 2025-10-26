@@ -39,3 +39,6 @@ ent-CrateEngineeringTeslaCoil = ящик с катушкой Теслы
 ent-CrateEngineeringTeslaGroundingRod = ящик с заземляющим стержнем Теслы
     .suffix = Защищённый
     .desc = Заземляющий стержень, идеален для защиты от молний.
+ent-CrateEngineeringRTG = ящик РИТЭГ
+    .suffix = Защищённый
+    .desc = Радиоизотопный термоэлектрический генератор, идеальный вариант, когда батареи разряжаются.

@@ -23,3 +23,5 @@ comms-console-announcement-title-centcom = Центральное командо
 comms-console-announcement-title-nukie = Ядерные оперативники Синдиката
 comms-console-announcement-title-station-ai = Станционный ИИ
 comms-console-announcement-title-wizard = Волшебник
+
+comms-console-announcement-title-inteq = Наёмники InteQ
