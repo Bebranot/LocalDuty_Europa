@@ -27,7 +27,7 @@ public sealed partial class CCVars
     /// </remarks>
     /// <seealso cref="ChatRateLimitPeriod"/>
     public static readonly CVarDef<int> ChatRateLimitCount =
-        CVarDef.Create("chat.rate_limit_count", 3, CVar.SERVERONLY);
+        CVarDef.Create("chat.rate_limit_count", 5, CVar.SERVERONLY);
 
     /// <summary>
     ///     Minimum delay (in seconds) between notifying admins about chat message rate limit violations.
@@ -40,7 +40,7 @@ public sealed partial class CCVars
         CVarDef.Create("chat.max_message_length", 5000, CVar.SERVER | CVar.REPLICATED); // Europa-Edit | 1000 > 5000
 
     public static readonly CVarDef<int> ChatMaxAnnouncementLength =
-        CVarDef.Create("chat.max_announcement_length", 3500, CVar.SERVER | CVar.REPLICATED); // Europa-Edit | 512 > 3500
+        CVarDef.Create("chat.max_announcement_length", 5000, CVar.SERVER | CVar.REPLICATED); // Europa-Edit | 512 > 3500
 
     public static readonly CVarDef<bool> ChatSanitizerEnabled =
         CVarDef.Create("chat.chat_sanitizer_enabled", true, CVar.SERVERONLY);

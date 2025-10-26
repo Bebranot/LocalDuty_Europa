@@ -5,7 +5,7 @@
   description: some music!
   components:
   - type: Sprite
-    sprite: Objects/Fun/PocketPlayer.rsi
+    sprite: _Duty/PocketPlayer.rsi
     layers:
     - state: "off"
       map: ["enum.JukeboxVisualLayers.Base"]
@@ -135,4 +135,4 @@
   id: ChanceXSledgeQueenCanon
   name: Celldweller - Good Luck you're Fucked
   path:
-    path: Audio/_Duty/SONGS/po prosbe/Celldweller - Good Luck You're Fucked.ogg
+    path: /Audio/_Duty/SONGS/po prosbe/Celldweller - Good Luck You're Fucked.ogg

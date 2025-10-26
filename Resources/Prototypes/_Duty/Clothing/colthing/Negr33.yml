@@ -1,0 +1,10 @@
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterStormCoat96
+  name: "Нуарный плащ с нашивками в виде белых бабочек"
+  description: "Плащ выполнен из тёмной, возможно матовой ткани, создающей атмосферу таинственности и драматизма. Вам бабочки напоминают что-то..."
+  components:
+  - type: Sprite
+    sprite: /Uploaded/Negr3/Negr33.rsi
+  - type: Clothing
+    sprite: /Uploaded/Negr3/Negr33.rsi

@@ -1,0 +1,10 @@
+- type: entity
+  parent: ClothingHeadBase
+  id: Generalhat
+  name: Шапка генерала
+  description: Эта шапка, вам явно не по размеру.
+  components:
+  - type: Sprite
+    sprite: Clothing/Head/Hats/generalhat.rsi
+  - type: Clothing
+    sprite: Clothing/Head/Hats/generalhat.rsi

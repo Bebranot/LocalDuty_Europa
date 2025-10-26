@@ -1,0 +1,11 @@
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckTieGeoffroyblack
+  name: Чёрное жабо
+  description: "Это элегантный и мрачный аксессуар, характерный для готической моды."
+  components:
+  - type: Sprite
+    sprite: /Uploaded/Negr1/Negr11.rsi
+  - type: Clothing
+    sprite: /Uploaded/Negr1/Negr11.rsi
+

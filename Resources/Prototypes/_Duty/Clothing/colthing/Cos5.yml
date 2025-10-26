@@ -1,0 +1,10 @@
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadBase01
+  name: Дамская шляпа с цветком
+  description: "Элегантная дамская шляпа с цветком, чтобы подчеркнуть свой статус ."
+  components:
+    - type: Sprite
+      sprite: /Uploaded/Other5/Chap.rsi
+    - type: Clothing
+      sprite: /Uploaded/Other5/Chap.rsi

@@ -1,0 +1,15 @@
+- type: entity
+  parent: ClothingMaskClownBase
+  id: ClothingMaskJoker
+  name: Маска Жопера
+  description: Маска незаметность свободно инкогнито кидать кожурки под ноги СБ и спрашивать; "Хочешь узнать, откуда у меня эти шрамы?
+  components:
+    - type: Sprite
+      sprite: /Uploaded/NM/Sprites/joker.rsi
+      state: icon
+    - type: Clothing
+      sprite: /Uploaded/NM/Sprites/joker.rsi
+    - type: Tag
+      tags:
+        - ClownMask
+        - WhitelistChameleon

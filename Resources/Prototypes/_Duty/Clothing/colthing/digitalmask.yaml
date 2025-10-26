@@ -1,0 +1,11 @@
+- type: entity
+  parent: ClothingEyesBase
+  id: ClothingEyesGlassesDigital
+  name: дисплейные очки
+  description: Очки для тех, кто любит скрывать свои настоящие эмоции за электронными.
+  components:
+  - type: Sprite
+    sprite: Clothing/Eyes/Glasses/digitalglasses.rsi
+    state: icon
+  - type: Clothing
+    sprite: Clothing/Eyes/Glasses/digitalglasses.rsi

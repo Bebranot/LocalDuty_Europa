@@ -1,0 +1,10 @@
+- type: entity
+  parent: ClothingBackpackDuffel
+  id: ClothingHeadBase02punGrob12
+  name: Чёрный гроб
+  description: "Единственный гроб для дани уважения тем, кому больше некуда идти, и кто блуждает с памятью о пустой вере…"
+  components:
+    - type: Sprite
+      sprite: /Uploaded/Other6/BIGGROB.rsi
+    - type: Clothing
+      sprite: /Uploaded/Other6/BIGGROB.rsi

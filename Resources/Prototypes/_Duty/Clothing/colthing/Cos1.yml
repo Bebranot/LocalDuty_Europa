@@ -1,0 +1,10 @@
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformDama2351
+  name: Чёрный костюм с жилетом
+  description: "Это классический и элегантный образ. Создающий строгий и стильный силуэт."
+  components:
+    - type: Sprite
+      sprite: /Uploaded/Negr2/Negr22.rsi
+    - type: Clothing
+      sprite: /Uploaded/Negr2/Negr22.rsi

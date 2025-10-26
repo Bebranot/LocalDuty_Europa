@@ -1,0 +1,15 @@
+- type: entity
+  parent: WeldingMaskBase
+  id: WeldingTagilla
+  name: Маска Тагиллы
+  description: Щас тебе голова-глаза будет!
+  components:
+  - type: Sprite
+    sprite: /Uploaded/tarkov/welding.rsi
+  - type: Clothing
+    sprite: /Uploaded/tarkov/welding.rsi
+  - type: Tag
+    tags:
+    - DroneUsable
+    - HamsterWearable
+    - WhitelistChameleon

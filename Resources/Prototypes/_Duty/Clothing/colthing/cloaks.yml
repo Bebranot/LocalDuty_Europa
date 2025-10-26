@@ -1,0 +1,10 @@
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: GeneralCloak
+  name: general cloak
+  description: There was supposed to be a "I hate SANABI" label.
+  components:
+  - type: Sprite
+    sprite: Clothing/Neck/Cloaks/generalcloak.rsi
+  - type: Clothing
+    sprite: Clothing/Neck/Cloaks/generalcloak.rsi
