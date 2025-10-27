@@ -46,6 +46,7 @@
   jobEntity: StationAiBrain
   jobPreviewEntity: PlayerStationAiPreview
   applyTraits: false
+  alwaysUseSpawner: true
 
 - type: job
   id: Borg
@@ -61,3 +62,4 @@
   supervisors: job-supervisors-rd
   jobEntity: PlayerBorgBattery
   applyTraits: true
+  alwaysUseSpawner: true

@@ -4,7 +4,7 @@ meta:
   engineVersion: 264.0.0
   forkId: ""
   forkVersion: ""
-  time: 10/14/2025 01:51:06
+  time: 10/26/2025 17:45:42
   entityCount: 1491
 maps: []
 grids:
@@ -41,7 +41,7 @@ entities:
   - uid: 1
     components:
     - type: MetaData
-      name: Terminal 'Arrow'
+      name: Терминал 'Стрела'
     - type: Transform
       pos: -0.039710164,0.27838397
       parent: invalid
@@ -416,6 +416,28 @@ entities:
       rot: 3.141592653589793 rad
       pos: -23.5,-0.5
       parent: 1
+- proto: AirlockExternalGlassShuttleArrivals
+  entities:
+  - uid: 38
+    components:
+    - type: Transform
+      pos: -25.5,-2.5
+      parent: 1
+  - uid: 39
+    components:
+    - type: Transform
+      pos: -23.5,-2.5
+      parent: 1
+  - uid: 40
+    components:
+    - type: Transform
+      pos: -17.5,-2.5
+      parent: 1
+  - uid: 1492
+    components:
+    - type: Transform
+      pos: -15.5,-2.5
+      parent: 1
 - proto: AirlockExternalGlassShuttleEmergencyLocked
   entities:
   - uid: 2
@@ -441,26 +463,6 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -15.5,4.5
-      parent: 1
-  - uid: 29
-    components:
-    - type: Transform
-      pos: -15.5,-2.5
-      parent: 1
-  - uid: 38
-    components:
-    - type: Transform
-      pos: -17.5,-2.5
-      parent: 1
-  - uid: 39
-    components:
-    - type: Transform
-      pos: -23.5,-2.5
-      parent: 1
-  - uid: 40
-    components:
-    - type: Transform
-      pos: -25.5,-2.5
       parent: 1
 - proto: AirlockGlass
   entities:

@@ -283,7 +283,7 @@
       collection: Paracusia
 
 - type: clause
-  id: volumewhisper1.ogg
+  id: noise
   clauseWeight: 20
   addedComponents:
   - type: Deaf
@@ -423,7 +423,7 @@
   id: particlesgreed
   clauseWeight: -10
   spawnedItems:
-  - Telecrystal1
+  - Telecrystal5
 
 - type: clause
   id: holygreed

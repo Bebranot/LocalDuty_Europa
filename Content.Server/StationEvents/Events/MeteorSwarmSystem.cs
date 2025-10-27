@@ -4,9 +4,11 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
 using System.Numerics;
 using Content.Server.Chat.Systems;
 using Content.Server.GameTicking.Rules;
+using Content.Server.Shuttles.Components;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Server.StationEvents.Components;
@@ -50,11 +52,18 @@ public sealed class MeteorSwarmSystem : GameRuleSystem<MeteorSwarmComponent>
 
         component.NextWaveTime += TimeSpan.FromSeconds(component.WaveCooldown.Next(RobustRandom));
 
+        var suitableStations = _station.GetStations()
+            .Where
+            (
+                HasComp<StationEmergencyShuttleComponent>
+            )
+            .ToList();
 
-        if (_station.GetStations().Count == 0)
+        if (suitableStations.Count == 0)
             return;
 
-        var station = RobustRandom.Pick(_station.GetStations());
+        var station = suitableStations.First();
+
         if (_station.GetLargestGrid(station) is not { } grid)
             return;
 

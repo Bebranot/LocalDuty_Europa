@@ -1,7 +1,5 @@
 - type: loadout
   id: HandHeldPowerMonitor
-  minLimit: 1
-  maxLimit: 1
   storage:
     back:
     - HandHeldPowerMonitorPowered

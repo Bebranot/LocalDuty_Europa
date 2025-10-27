@@ -1,7 +1,5 @@
 - type: loadout
   id: HandHeldAtmosMonitor
-  minLimit: 1
-  maxLimit: 1
   storage:
     back:
     - HandHeldAtmosMonitorPowered

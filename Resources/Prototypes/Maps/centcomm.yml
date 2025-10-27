@@ -12,8 +12,8 @@
 
 - type: gameMap
   id: CentComm
-  mapName: 'Central Command'
-  mapPath: /Maps/centcomm.yml
+  mapName: 'Центральное Командование'
+  mapPath: /Maps/_Europa/centcom_backmen.yml
   maxRandomOffset: 0
   randomRotation: false
   minPlayers: 10

@@ -100,8 +100,10 @@ public sealed partial class DockingSystem
         matty = Matrix3x2.Identity;
 
         if (shuttleDock.Docked ||
-            gridDock.Docked ||
-            !shuttleDockXform.Anchored ||
+            gridDock.Docked)
+            return false; // bcz what???
+
+        if (!shuttleDockXform.Anchored ||
             !gridDockXform.Anchored)
         {
             if (!ignored)

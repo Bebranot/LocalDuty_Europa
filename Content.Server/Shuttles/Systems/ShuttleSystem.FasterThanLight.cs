@@ -623,18 +623,33 @@ public sealed partial class ShuttleSystem
         else if (HasComp<MapGridComponent>(target.EntityId) &&
                  !HasComp<MapComponent>(target.EntityId))
         {
-            var config = _dockSystem.GetDockingConfigAt(uid, target.EntityId, target, entity.Comp1.TargetAngle);
+            var config = _dockSystem.GetDockingConfigAt(uid,
+                target.EntityId,
+                target,
+                entity.Comp1.TargetAngle,
+                entity.Comp1.Ignored,
+                priorityTag: entity.Comp1.PriorityTag);
             var mapCoordinates = _transform.ToMapCoordinates(target);
 
             // Goob/LL edit start
             // Added a retry to getting a valid docking config, in case concurrent FTL arrivals took the reserved spot
             if (config != null)
-                FTLDock((uid, xform), config);
-            else if ((config = _dockSystem.GetDockingConfig(uid, target.EntityId, entity.Comp1.PriorityTag)) != null)
-                FTLDock((uid, xform), config);
+                FTLDock((uid, xform), config, entity.Comp1.DeleteTrash);
+            else if ((config = _dockSystem.GetDockingConfig(uid, target.EntityId, entity.Comp1.PriorityTag, entity.Comp1.Ignored)) != null)
+                FTLDock((uid, xform), config, entity.Comp1.DeleteTrash);
             else
                 TryFTLProximity(uid, target.EntityId);
             // Goob/LL edit end
+
+            // nah
+            // if (config == null)
+            // {
+            //     TryFTLProximity(uid, target.EntityId);
+            // }
+            // else
+            // {
+            //     FTLDock((uid, xform), config, entity.Comp1.DeleteTrash);
+            // }
 
             mapId = mapCoordinates.MapId;
         }

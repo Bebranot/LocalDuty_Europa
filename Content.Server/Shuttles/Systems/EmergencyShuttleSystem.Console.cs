@@ -244,7 +244,7 @@ public sealed partial class EmergencyShuttleSystem
                 if (!Deleted(transitHub.Entity))
                 {
                     _shuttle.FTLToDock(comp.EmergencyShuttle.Value, shuttle,
-                        transitHub.Entity.Value, ConsoleAccumulator, TransitTime);
+                        transitHub.Entity.Value, ConsoleAccumulator, TransitTime, priorityTag: "DockEmergency");
                     continue;
                 }
 

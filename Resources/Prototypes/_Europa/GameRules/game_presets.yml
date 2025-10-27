@@ -16,7 +16,6 @@
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
-  - LavalandStormScheduler # Lavaland Change
 
 - type: gamePreset
   id: SecretRevolution #For Admin Use: Runs Extended but shows "Secret" in lobby.
@@ -41,7 +40,6 @@
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
-  - LavalandStormScheduler # Lavaland Change
 
 - type: gamePreset
   id: SecretZombie #For Admin Use: Runs Extended but shows "Secret" in lobby.
@@ -64,7 +62,6 @@
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
-  - LavalandStormScheduler # Lavaland Change
 
 - type: gamePreset
   id: SecretWizard #For Admin Use: Runs Extended but shows "Secret" in lobby.
@@ -87,7 +84,6 @@
   - BasicStationEventScheduler
   - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
-  - LavalandStormScheduler # Lavaland Change
 
 - type: gamePreset
   id: SecretShadowling #For Admin Use: Runs Extended but shows "Secret" in lobby.
@@ -110,7 +106,6 @@
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
-  - LavalandStormScheduler # Lavaland Change
 
 - type: gamePreset
   id: SecretChangeling #For Admin Use: Runs Extended but shows "Secret" in lobby.
@@ -133,4 +128,3 @@
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
-  - LavalandStormScheduler # Lavaland Change
